@@ -61,6 +61,30 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('newsletter-popup').style.display = 'none';
   document.getElementById('message-popup').style.display = 'none';
 });
+function toggleDescription(card) {
+  var description = card.querySelector('.description');
+  if (description.style.display === "none" || description.style.display === "") {
+    description.style.display = "block";
+  } else {
+    description.style.display = "none";
+  }
+}
+function subscribeNewsletter() {
+  var email = document.getElementById('newsletter-email').value;
+  if (email) {
+    // Simulate an AJAX request to subscribe the email
+    setTimeout(function () {
+      // Show the thank you popup
+      document.getElementById('newsletterPopup').style.display = 'block';
+    }, 500);
+  } else {
+    alert('Por favor ingrese un correo electrónico válido.');
+  }
+}
+
+function closePopup(popupId) {
+  document.getElementById(popupId).style.display = 'none';
+}
 
 
 (function () {
