@@ -4,39 +4,24 @@
   --nav-font: "Poppins", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
   --background-color: #ffffff;
-  /* Background color for the entire website, including individual sections */
   --default-color: #444444;
-  /* Default color used for the majority of the text content across the entire website */
   --heading-color: #37517e;
-  /* Color for headings, subheadings and title throughout the website */
   --accent-color: #47b2e4;
-  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff;
-  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff;
-  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #ffffff;
-  /* The default color of the main navmenu links */
   --nav-hover-color: #47b2e4;
-  /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff;
-  /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff;
-  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #444444;
-  /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #47b2e4;
-  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
   --background-color: #f5f6f8;
@@ -2084,4 +2069,118 @@ section,
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.card-body .btn {
+  background: #47b2e4;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 50px;
+}
+
+.card-body .btn:hover {
+  background: #37517e;
+}
+
+.additional-info {
+  margin-top: 40px;
+}
+
+.additional-info h3 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.additional-info p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.additional-info {
+  margin-top: 40px;
+}
+
+.additional-info h3 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.additional-info p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Advocacy and Outreach Section */
+.advocacy-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px;
+}
+
+.advocacy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.advocacy-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.advocacy-card-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.advocacy-card-body h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.advocacy-card-body p {
+  font-size: 14px;
+  color: #777;
 }
