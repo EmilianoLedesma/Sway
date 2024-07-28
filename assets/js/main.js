@@ -28,9 +28,8 @@ function closePopup() {
 
 function confirmDonation() {
   document.getElementById('confirmation-popup').style.display = 'none';
-  document.getElementById('thankyou-popup').style.display = 'flex';
+  window.open('/payment.html', '_blank');
 }
-
 function showNewsletterConfirmation() {
   const email = document.getElementById('newsletter-email').value;
   if (!email) {
