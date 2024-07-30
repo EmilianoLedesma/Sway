@@ -752,6 +752,21 @@ section,
   background: url('https://cdn.pixabay.com/photo/2014/05/02/01/57/sea-turtle-335839_1280.jpg') no-repeat center center/cover;
   background-position: center 50%;
 }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero>* {
+  position: relative;
+  z-index: 2;
+}
 
 .hero h1 {
   margin: 0;
