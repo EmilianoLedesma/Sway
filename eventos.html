@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Eventos y Actividades - SWAY</title>
+  
+  <!-- Favicons -->
+  <link href="assets/img/SWAY (1).png" rel="icon">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800" rel="stylesheet">
+  
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/eventos.css" rel="stylesheet">
+</head>
+
+<body class="eventos-page">
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">SWAY</h1>
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#portfolio">Novedades</a></li>
+          <li><a href="especies.html">Especies</a></li>
+          <li><a href="eventos.html" class="active">Eventos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+        </ul>
+      </nav>
+      
+      <a class="btn-getstarted" href="#donation">Donar</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+            <h1>Eventos y Actividades de Conservación Marina</h1>
+            <p>Únete a nuestras actividades de conservación, webinars educativos, limpiezas de playa y campañas de concientización. Juntos podemos hacer la diferencia.</p>
+            <div class="d-flex">
+              <a href="#calendario" class="btn-get-started">Ver Calendario</a>
+              <a href="#crear-evento" class="btn-watch-video d-flex align-items-center">
+                <i class="bi bi-plus-circle"></i><span>Crear Evento</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Próximos Eventos Destacados -->
+    <section id="eventos-destacados" class="section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Próximos Eventos Destacados</h2>
+        <p>No te pierdas estas actividades especiales de conservación marina</p>
+      </div>
+      
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="evento-destacado">
+              <div class="evento-fecha">
+                <div class="dia">15</div>
+                <div class="mes">JUN</div>
+              </div>
+              <div class="evento-content">
+                <span class="evento-tipo webinar">Webinar</span>
+                <h4>Crisis de los Arrecifes de Coral</h4>
+                <p>Expertos internacionales discuten las amenazas actuales a los arrecifes de coral y estrategias de conservación.</p>
+                <div class="evento-info">
+                  <div class="info-item">
+                    <i class="bi bi-clock"></i>
+                    <span>19:00 - 20:30 UTC</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="bi bi-people"></i>
+                    <span>248 inscritos</span>
+                  </div>
+                </div>
+                <button class="btn-registro" onclick="registrarEvento('webinar-arrecifes')">
+                  Registrarse Gratis
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="evento-destacado">
+              <div class="evento-fecha">
+                <div class="dia">22</div>
+                <div class="mes">JUN</div>
+              </div>
+              <div class="evento-content">
+                <span class="evento-tipo limpieza">Limpieza</span>
+                <h4>Gran Limpieza de Playa Cancún</h4>
+                <p>Actividad presencial de limpieza en las playas de Cancún. Incluye equipo, refrigerio y certificado de participación.</p>
+                <div class="evento-info">
+                  <div class="info-item">
+                    <i class="bi bi-geo-alt"></i>
+                    <span>Playa Delfines, Cancún</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="bi bi-people"></i>
+                    <span>156 voluntarios</span>
+                  </div>
+                </div>
+                <button class="btn-registro" onclick="registrarEvento('limpieza-cancun')">
+                  Unirse como Voluntario
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="evento-destacado">
+              <div class="evento-fecha">
+                <div class="dia">08</div>
+                <div class="mes">JUL</div>
+              </div>
+              <div class="evento-content">
+                <span class="evento-tipo conferencia">Conferencia</span>
+                <h4>Cumbre Oceánica Internacional</h4>
+                <p>Conferencia de 3 días con científicos, activistas y líderes mundiales en conservación marina.</p>
+                <div class="evento-info">
+                  <div class="info-item">
+                    <i class="bi bi-geo-alt"></i>
+                    <span>Virtual + Presencial</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="bi bi-people"></i>
+                    <span>1,200+ asistentes</span>
+                  </div>
+                </div>
+                <button class="btn-registro premium" onclick="registrarEvento('cumbre-oceanica')">
+                  Ver Entradas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendario Interactivo -->
+    <section id="calendario" class="section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Calendario de Eventos</h2>
+        <p>Explora todos nuestros eventos programados y planifica tu participación</p>
+      </div>
+      
+      <div class="container">
+        <div class="calendario-container">
+          <div class="calendario-header">
+            <div class="calendario-nav">
+              <button class="nav-btn" id="prev-month">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <h3 id="current-month-year">Junio 2025</h3>
+              <button class="nav-btn" id="next-month">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+            
+            <div class="vista-opciones">
+              <button class="vista-btn active" data-vista="mes">Mes</button>
+              <button class="vista-btn" data-vista="semana">Semana</button>
+              <button class="vista-btn" data-vista="agenda">Agenda</button>
+            </div>
+          </div>
+          
+          <div class="filtros-calendario">
+            <div class="filter-group">
+              <label>Tipo de Evento:</label>
+              <select id="tipo-filter">
+                <option value="">Todos</option>
+                <option value="webinar">Webinars</option>
+                <option value="limpieza">Limpiezas</option>
+                <option value="conferencia">Conferencias</option>
+                <option value="taller">Talleres</option>
+                <option value="campana">Campañas</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label>Modalidad:</label>
+              <select id="modalidad-filter">
+                <option value="">Todas</option>
+                <option value="presencial">Presencial</option>
+                <option value="virtual">Virtual</option>
+                <option value="hibrido">Híbrido</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label>Región:</label>
+              <select id="region-filter">
+                <option value="">Todas las regiones</option>
+                <option value="mexico">México</option>
+                <option value="centroamerica">Centroamérica</option>
+                <option value="sudamerica">Sudamérica</option>
+                <option value="global">Global/Virtual</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Vista Mes -->
+          <div class="calendario-grid" id="calendario-mes">
+            <div class="calendario-dias-semana">
+              <div class="dia-semana">Dom</div>
+              <div class="dia-semana">Lun</div>
+              <div class="dia-semana">Mar</div>
+              <div class="dia-semana">Mié</div>
+              <div class="dia-semana">Jue</div>
+              <div class="dia-semana">Vie</div>
+              <div class="dia-semana">Sáb</div>
+            </div>
+            
+            <div class="calendario-dias" id="calendario-dias">
+              <!-- Los días se generarán dinámicamente -->
+            </div>
+          </div>
+          
+          <!-- Vista Agenda -->
+          <div class="agenda-view" id="agenda-view" style="display: none;">
+            <div class="agenda-list" id="agenda-list">
+              <!-- Los eventos de agenda se generarán dinámicamente -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Leyenda -->
+        <div class="calendario-leyenda">
+          <h5>Tipos de Eventos</h5>
+          <div class="leyenda-items">
+            <div class="leyenda-item">
+              <span class="color-badge webinar"></span>
+              <span>Webinars</span>
+            </div>
+            <div class="leyenda-item">
+              <span class="color-badge limpieza"></span>
+              <span>Limpiezas</span>
+            </div>
+            <div class="leyenda-item">
+              <span class="color-badge conferencia"></span>
+              <span>Conferencias</span>
+            </div>
+            <div class="leyenda-item">
+              <span class="color-badge taller"></span>
+              <span>Talleres</span>
+            </div>
+            <div class="leyenda-item">
+              <span class="color-badge campana"></span>
+              <span>Campañas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crear Evento -->
+    <section id="crear-evento" class="section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Organiza tu Propio Evento</h2>
+        <p>¿Tienes una idea para un evento de conservación marina? ¡Compártela con la comunidad!</p>
+      </div>
+      
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="crear-evento-card">
+              <form id="form-crear-evento" class="crear-evento-form">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Título del Evento *</label>
+                      <input type="text" name="titulo" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Tipo de Evento *</label>
+                      <select name="tipo" required>
+                        <option value="">Seleccionar tipo</option>
+                        <option value="webinar">Webinar</option>
+                        <option value="limpieza">Limpieza de Playa</option>
+                        <option value="conferencia">Conferencia</option>
+                        <option value="taller">Taller</option>
+                        <option value="campana">Campaña</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Fecha *</label>
+                      <input type="date" name="fecha" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Hora *</label>
+                      <input type="time" name="hora" required>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Modalidad *</label>
+                      <select name="modalidad" required>
+                        <option value="">Seleccionar modalidad</option>
+                        <option value="presencial">Presencial</option>
+                        <option value="virtual">Virtual</option>
+                        <option value="hibrido">Híbrido</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Ubicación/Plataforma *</label>
+                      <input type="text" name="ubicacion" placeholder="Dirección o enlace virtual" required>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label>Descripción del Evento *</label>
+                  <textarea name="descripcion" rows="4" placeholder="Describe tu evento, objetivos y lo que los participantes pueden esperar..." required></textarea>
+                </div>
+                
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Capacidad Máxima</label>
+                      <input type="number" name="capacidad" min="1" placeholder="Número de participantes">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Costo de Entrada</label>
+                      <select name="costo">
+                        <option value="gratuito">Gratuito</option>
+                        <option value="donacion">Donación sugerida</option>
+                        <option value="pago">Evento de pago</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label>Información de Contacto *</label>
+                  <input type="email" name="contacto" placeholder="email@ejemplo.com" required>
+                </div>
+                
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" name="terminos" required>
+                    Acepto los términos y condiciones y que mi evento sea revisado antes de su publicación.
+                  </label>
+                </div>
+                
+                <button type="submit" class="btn-submit-evento">
+                  <i class="bi bi-calendar-plus"></i> Enviar Propuesta de Evento
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal Detalles de Evento -->
+  <div class="modal-overlay" id="evento-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeEventoModal()">&times;</button>
+      <div class="modal-body" id="evento-modal-content">
+        <!-- Contenido dinámico del evento -->
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/eventos.js"></script>
+</body>
+</html>
