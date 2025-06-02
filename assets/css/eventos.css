@@ -1,110 +1,357 @@
-/* ----------- Mejoras Visuales para Calendario de Eventos ----------- */
+/* ----------- Estilos para Página de Eventos SWAY ----------- */
 
-/* Calendario Interactivo: grid de días */
+/* Sección Hero */
+.hero.section.dark-background {
+  background: url('https://cdn.pixabay.com/photo/2014/05/02/01/57/sea-turtle-335839_1280.jpg') no-repeat center center/cover;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  position: relative;
+}
+.hero.section.dark-background:before {
+  content: '';
+  background: rgba(55, 81, 126, 0.6);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.hero.section.dark-background > .container {
+  position: relative;
+  z-index: 2;
+}
+.hero.section.dark-background h1,
+.hero.section.dark-background p {
+  color: #fff;
+}
+
+/* Eventos Destacados */
+#eventos-destacados .evento-destacado {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(55,81,126,0.07);
+  padding: 24px 18px;
+  margin-bottom: 18px;
+  transition: box-shadow 0.2s;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+#eventos-destacados .evento-destacado:hover {
+  box-shadow: 0 8px 32px rgba(55,81,126,0.16);
+}
+.evento-fecha {
+  min-width: 54px;
+  text-align: center;
+  background: #47b2e4;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+.evento-fecha .dia {
+  font-size: 2rem;
+}
+.evento-fecha .mes {
+  font-size: 1rem;
+  margin-top: -6px;
+  letter-spacing: 2px;
+}
+.evento-content h4 {
+  margin: 0 0 10px;
+}
+.evento-tipo {
+  display: inline-block;
+  font-size: 0.9rem;
+  padding: 3px 12px;
+  border-radius: 16px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #fff;
+}
+.evento-tipo.webinar { background: #3e8ed0; }
+.evento-tipo.limpieza { background: #30c18d; }
+.evento-tipo.conferencia { background: #f39c12; }
+.evento-tipo.taller { background: #a569bd; }
+.evento-tipo.campana { background: #e74c3c; }
+.evento-info {
+  display: flex;
+  gap: 24px;
+  margin: 10px 0;
+}
+.evento-info .info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.97rem;
+}
+.btn-registro, .btn-registro.premium {
+  background: #47b2e4;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-registro:hover {
+  background: #37517e;
+}
+.btn-registro.premium {
+  background: #f39c12;
+}
+.btn-registro.premium:hover {
+  background: #c87f0a;
+}
+
+/* Calendario Interactivo */
+.calendario-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 18px rgba(55,81,126,0.08);
+  padding: 26px 18px;
+}
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.calendario-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-btn {
+  background: #47b2e4;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-btn:hover {
+  background: #37517e;
+}
+.vista-opciones {
+  display: flex;
+  gap: 6px;
+}
+.vista-btn {
+  background: #e9ecef;
+  color: #37517e;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2px;
+  transition: background 0.2s;
+}
+.vista-btn.active, .vista-btn:hover {
+  background: #47b2e4;
+  color: #fff;
+}
+.filtros-calendario {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.filter-group label {
+  font-weight: 600;
+  margin-right: 6px;
+}
+.filter-group select {
+  border-radius: 8px;
+  border: 1px solid #b2bec3;
+  padding: 2px 8px;
+  outline: none;
+}
+.calendario-grid {
+  margin-top: 14px;
+}
+.calendario-dias-semana {
+  display: flex;
+  gap: 2px;
+  font-weight: 600;
+  color: #37517e;
+}
+.calendario-dias-semana .dia-semana {
+  flex: 1;
+  text-align: center;
+  padding: 4px 0;
+}
 .calendario-dias {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
   min-height: 120px;
-  background: #eaf6fb;
-  border-radius: 12px;
-  padding: 6px;
 }
-
 .calendario-dias .dia {
-  background: #f8fafc;
+  background: #eaf6fb;
   border-radius: 10px;
-  padding: 8px 0 4px 0;
+  padding: 8px 0;
   text-align: center;
   margin-bottom: 2px;
-  min-height: 50px;
-  position: relative;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 3px rgba(55,81,126,0.04);
-  border: 2px solid transparent;
+  transition: background 0.2s;
 }
-
-.calendario-dias .dia:hover,
-.calendario-dias .dia.selected {
+.calendario-dias .dia:hover, .calendario-dias .dia.active {
   background: #47b2e4;
   color: #fff;
-  border: 2px solid #47b2e4;
 }
 
-/* Muestra los eventos con badges de color dentro de cada día */
-.calendario-dias .eventos-dia {
+/* Leyenda */
+.calendario-leyenda {
+  background: #f5f6f8;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 12px 18px;
+}
+.leyenda-items {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: 4px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
-
-.calendario-dias .evento-badge {
+.leyenda-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.80rem;
+  gap: 6px;
+  font-size: 0.98rem;
+}
+.color-badge {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.color-badge.webinar { background: #3e8ed0; }
+.color-badge.limpieza { background: #30c18d; }
+.color-badge.conferencia { background: #f39c12; }
+.color-badge.taller { background: #a569bd; }
+.color-badge.campana { background: #e74c3c; }
+
+/* Agenda View */
+.agenda-view {
+  margin-top: 12px;
+}
+.agenda-list {
+  border-left: 3px solid #47b2e4;
+  padding-left: 18px;
+}
+
+/* Crear Evento */
+.crear-evento-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(55,81,126,0.10);
+  padding: 28px 22px;
+}
+.crear-evento-form .form-group {
+  margin-bottom: 18px;
+}
+.crear-evento-form label {
   font-weight: 600;
-  border-radius: 8px;
-  padding: 2px 6px;
-  margin: 0 auto 1px auto;
-  color: #fff;
-  width: fit-content;
-  min-width: 56px;
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-shadow: 0 1px 2px rgba(55,81,126,0.10);
-}
-
-/* Colores según el tipo de evento */
-.evento-type-webinar { background: #3e8ed0; }
-.evento-type-limpieza { background: #30c18d; }
-.evento-type-conferencia { background: #f39c12; }
-.evento-type-taller { background: #a569bd; }
-.evento-type-campana { background: #e74c3c; }
-
-/* Badge de evento resaltado (por ejemplo, evento hoy) */
-.calendario-dias .evento-badge.hoy {
-  border: 2px solid #37517e;
-  box-shadow: 0 2px 8px rgba(55,81,126,0.12);
-}
-
-/* Si quieres mostrar varios eventos en el mismo día */
-.calendario-dias .eventos-dia .evento-badge:not(:last-child) {
-  margin-bottom: 2px;
-}
-
-/* Día actual destacado */
-.calendario-dias .dia.hoy {
-  border: 2px solid #47b2e4;
-  background: #e2f1fa;
-  font-weight: bold;
   color: #37517e;
+  margin-bottom: 4px;
+  display: block;
+}
+.crear-evento-form input,
+.crear-evento-form select,
+.crear-evento-form textarea {
+  width: 100%;
+  border: 1px solid #b2bec3;
+  border-radius: 8px;
+  padding: 7px 10px;
+  margin-top: 2px;
+  font-size: 1rem;
+}
+.crear-evento-form textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+.btn-submit-evento {
+  background: #47b2e4;
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 10px;
+}
+.btn-submit-evento:hover {
+  background: #37517e;
 }
 
-/* Tooltip para ver más eventos si hay muchos */
-.calendario-dias .evento-badge.more {
-  background: #aaa;
-  color: #fff;
-  font-size: 0.8rem;
-  padding: 1px 7px;
-  border-radius: 8px;
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 62, 80, 0.65);
+  z-index: 1099;
+  justify-content: center;
+  align-items: center;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 15px;
+  padding: 36px 30px;
+  max-width: 420px;
+  width: 90vw;
+  box-shadow: 0 6px 32px rgba(55,81,126,0.13);
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #37517e;
+  cursor: pointer;
 }
 
 /* Responsive */
-@media (max-width: 600px) {
-  .calendario-dias {
-    grid-template-columns: repeat(7, 1fr);
-    padding: 2px;
+@media (max-width: 991px) {
+  #eventos-destacados .evento-destacado {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .calendario-dias .dia {
-    min-height: 32px;
-    padding: 3px 0 2px 0;
-    font-size: 0.98rem;
+  .filtros-calendario {
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
-/* ----------- Fin Mejora Visual de Calendario ----------- */
+@media (max-width: 600px) {
+  .crear-evento-card, .calendario-container {
+    padding: 10px 5px;
+  }
+  .modal-content {
+    padding: 14px 6px;
+  }
+}
+
+/* ----------- Fin de Estilos para Eventos ----------- */
