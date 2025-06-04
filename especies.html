@@ -59,14 +59,17 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-            <h1>Catálogo de Especies Marinas</h1>
-            <p>Descubre la increíble biodiversidad de nuestros océanos y aprende sobre el estado de conservación de cada especie.</p>
+            <h1>Catálogo de Especies Marinas en Peligro</h1>
+            <p>Descubre la increíble biodiversidad de nuestros océanos y aprende sobre el estado de conservación de cada especie. Conoce los esfuerzos de SWAY para proteger a estos magníficos habitantes marinos y cómo puedes contribuir a su preservación.</p>
             <div class="d-flex">
               <a href="#especies" class="btn-get-started">Explorar Especies</a>
               <a href="#mapa" class="btn-watch-video d-flex align-items-center">
-                <i class="bi bi-map"></i><span>Ver Mapa</span>
+                <i class="bi bi-map"></i><span>Ver Mapa de Distribución</span>
               </a>
             </div>
+          </div>
+          <div class="col-lg-4 order-1 order-lg-2 hero-img">
+            <img src="https://cdn.pixabay.com/photo/2016/11/14/22/18/beach-1825225_1280.jpg" class="img-fluid rounded" alt="Biodiversidad marina" data-aos="zoom-in">
           </div>
         </div>
       </div>
@@ -130,15 +133,22 @@
     <!-- Filtros y Búsqueda -->
     <section id="filtros" class="section">
       <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Explorador de Vida Marina</h2>
+          <p>Utiliza nuestras herramientas de búsqueda avanzada para descubrir y aprender sobre miles de especies marinas</p>
+        </div>
         <div class="filtros-container">
           <div class="row">
             <div class="col-lg-4">
-              <div class="busqueda-avanzada">
-                <h4>Buscar Especies</h4>
-                <input type="text" placeholder="Nombre científico o común..." id="search-especies">
+              <div class="busqueda-avanzada" data-aos="fade-up">
+                <h4>Búsqueda de Especies</h4>
+                <div class="search-box">
+                  <i class="bi bi-search search-icon"></i>
+                  <input type="text" placeholder="Nombre científico o común..." id="search-especies">
+                </div>
                 
                 <div class="filter-group">
-                  <label>Hábitat</label>
+                  <label><i class="bi bi-house-heart"></i> Hábitat</label>
                   <select id="habitat-filter">
                     <option value="">Todos los hábitats</option>
                     <option value="arrecife">Arrecifes de Coral</option>
@@ -146,11 +156,13 @@
                     <option value="aguas-abiertas">Aguas Abiertas</option>
                     <option value="costero">Zona Costera</option>
                     <option value="polar">Aguas Polares</option>
+                    <option value="manglar">Manglares</option>
+                    <option value="estuario">Estuarios</option>
                   </select>
                 </div>
                 
                 <div class="filter-group">
-                  <label>Estado de Conservación</label>
+                  <label><i class="bi bi-shield"></i> Estado de Conservación</label>
                   <select id="conservation-filter">
                     <option value="">Todos los estados</option>
                     <option value="extincion-critica">Extinción Crítica</option>
@@ -162,7 +174,7 @@
                 </div>
                 
                 <div class="filter-group">
-                  <label>Tipo de Organismo</label>
+                  <label><i class="bi bi-tags"></i> Tipo de Organismo</label>
                   <select id="type-filter">
                     <option value="">Todos los tipos</option>
                     <option value="mamiferos">Mamíferos Marinos</option>
@@ -171,13 +183,30 @@
                     <option value="invertebrados">Invertebrados</option>
                     <option value="corales">Corales</option>
                     <option value="algas">Algas Marinas</option>
+                    <option value="aves">Aves Marinas</option>
                   </select>
                 </div>
+
+                <div class="filter-group">
+                  <label><i class="bi bi-globe"></i> Región Geográfica</label>
+                  <select id="region-filter">
+                    <option value="">Todas las regiones</option>
+                    <option value="pacifico">Océano Pacífico</option>
+                    <option value="atlantico">Océano Atlántico</option>
+                    <option value="indico">Océano Índico</option>
+                    <option value="artico">Océano Ártico</option>
+                    <option value="antartico">Océano Antártico</option>
+                    <option value="mediterraneo">Mar Mediterráneo</option>
+                    <option value="caribe">Mar Caribe</option>
+                  </select>
+                </div>
+
+                <button class="btn-search w-100"><i class="bi bi-search"></i> Buscar Especies</button>
               </div>
             </div>
             
             <div class="col-lg-8">
-              <div class="vista-opciones">
+              <div class="vista-opciones" data-aos="fade-up">
                 <div class="vista-buttons">
                   <button class="vista-btn active" data-vista="grid">
                     <i class="bi bi-grid-3x3-gap"></i> Vista Grid
@@ -191,12 +220,24 @@
                 </div>
                 
                 <div class="ordenar">
+                  <label><i class="bi bi-sort-alpha-down"></i> Ordenar por:</label>
                   <select id="sort-especies">
-                    <option value="nombre">Ordenar por Nombre</option>
+                    <option value="nombre">Nombre</option>
                     <option value="conservation">Estado de Conservación</option>
                     <option value="size">Tamaño</option>
                     <option value="habitat">Hábitat</option>
+                    <option value="added">Recién Agregados</option>
                   </select>
+                </div>
+              </div>
+
+              <div class="especies-encontradas" data-aos="fade-up">
+                <h4><span id="especies-count">123</span> Especies encontradas</h4>
+                <p>Explora nuestra base de datos actualizada regularmente con información científica verificada.</p>
+                <div class="tags-activos">
+                  <span class="tag-filter">Reptiles Marinos <i class="bi bi-x"></i></span>
+                  <span class="tag-filter">Vulnerable <i class="bi bi-x"></i></span>
+                  <span class="tag-filter">Océano Pacífico <i class="bi bi-x"></i></span>
                 </div>
               </div>
             </div>
@@ -213,7 +254,7 @@
           <!-- Especie 1: Tortuga Marina -->
           <div class="especie-card" data-habitat="costero" data-conservation="vulnerable" data-type="reptiles">
             <div class="especie-image">
-              <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400" alt="Tortuga Marina Verde">
+              <img src="https://pixabay.com/photos/sea-turtle-diving-underwater-2547084/" alt="Tortuga Marina Verde">
               <div class="conservation-badge vulnerable">Vulnerable</div>
             </div>
             <div class="especie-content">
@@ -234,7 +275,7 @@
                 </div>
               </div>
               <p class="especie-description">
-                La tortuga verde es una de las especies de tortugas marinas más grandes. Su nombre proviene del color verdoso de su grasa, no de su caparazón.
+                La tortuga verde es una de las especies de tortugas marinas más grandes. Su nombre proviene del color verdoso de su grasa, no de su caparazón. Actualmente se encuentra amenazada por la captura ilegal, pérdida de hábitat y contaminación marina.
               </p>
               <div class="especie-actions">
                 <button class="btn-primary" onclick="openSpeciesDetail('tortuga-verde')">
@@ -250,7 +291,7 @@
           <!-- Especie 2: Ballena Azul -->
           <div class="especie-card" data-habitat="aguas-abiertas" data-conservation="peligro" data-type="mamiferos">
             <div class="especie-image">
-              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400" alt="Ballena Azul">
+              <img src="https://pixabay.com/photos/whale-humpback-whale-animal-mammal-1984341/" alt="Ballena Azul">
               <div class="conservation-badge peligro">En Peligro</div>
             </div>
             <div class="especie-content">
@@ -259,11 +300,11 @@
               <div class="especie-stats">
                 <div class="stat">
                   <i class="bi bi-rulers"></i>
-                  <span>30m longitud</span>
+                  <span>Hasta 30m</span>
                 </div>
                 <div class="stat">
                   <i class="bi bi-geo-alt"></i>
-                  <span>Todos los océanos</span>
+                  <span>Oceános globales</span>
                 </div>
                 <div class="stat">
                   <i class="bi bi-heart-pulse"></i>
@@ -271,7 +312,7 @@
                 </div>
               </div>
               <p class="especie-description">
-                El animal más grande que ha existido en la Tierra. Su corazón puede pesar tanto como un automóvil pequeño.
+                La ballena azul es el animal más grande que ha existido en la Tierra. Pueden pesar hasta 200 toneladas. Su población se redujo drásticamente debido a la caza comercial, y ahora están protegidas internacionalmente.
               </p>
               <div class="especie-actions">
                 <button class="btn-primary" onclick="openSpeciesDetail('ballena-azul')">
@@ -284,74 +325,74 @@
             </div>
           </div>
 
-          <!-- Especie 3: Pez Payaso -->
-          <div class="especie-card" data-habitat="arrecife" data-conservation="preocupacion-menor" data-type="peces">
-            <div class="especie-image">
-              <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400" alt="Pez Payaso">
-              <div class="conservation-badge preocupacion-menor">Preocupación Menor</div>
-            </div>
-            <div class="especie-content">
-              <h3>Pez Payaso</h3>
-              <p class="scientific-name">Amphiprioninae</p>
-              <div class="especie-stats">
-                <div class="stat">
-                  <i class="bi bi-rulers"></i>
-                  <span>11cm longitud</span>
-                </div>
-                <div class="stat">
-                  <i class="bi bi-geo-alt"></i>
-                  <span>Arrecifes Indo-Pacífico</span>
-                </div>
-                <div class="stat">
-                  <i class="bi bi-heart-pulse"></i>
-                  <span>Vida: 10 años</span>
-                </div>
-              </div>
-              <p class="especie-description">
-                Conocido por su relación simbiótica con las anémonas marinas, el pez payaso es inmune al veneno de su huésped.
-              </p>
-              <div class="especie-actions">
-                <button class="btn-primary" onclick="openSpeciesDetail('pez-payaso')">
-                  Ver Detalles
-                </button>
-                <button class="btn-secondary" onclick="reportSighting('pez-payaso')">
-                  <i class="bi bi-camera"></i> Reportar Avistamiento
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Especie 4: Coral Cuerno de Alce -->
+          <!-- Especie 3: Arrecife de Coral -->
           <div class="especie-card" data-habitat="arrecife" data-conservation="extincion-critica" data-type="corales">
             <div class="especie-image">
-              <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400" alt="Coral Cuerno de Alce">
+              <img src="https://pixabay.com/photos/coral-reef-underwater-sea-ocean-683851/" alt="Arrecife de Coral">
               <div class="conservation-badge extincion-critica">Extinción Crítica</div>
             </div>
             <div class="especie-content">
               <h3>Coral Cuerno de Alce</h3>
-              <p class="scientific-name">Acropora cervicornis</p>
+              <p class="scientific-name">Acropora palmata</p>
               <div class="especie-stats">
                 <div class="stat">
-                  <i class="bi bi-rulers"></i>
-                  <span>2m altura</span>
+                  <i class="bi bi-thermometer"></i>
+                  <span>Temp: 23-29°C</span>
                 </div>
                 <div class="stat">
                   <i class="bi bi-geo-alt"></i>
-                  <span>Caribe</span>
+                  <span>Mar Caribe</span>
                 </div>
                 <div class="stat">
-                  <i class="bi bi-heart-pulse"></i>
-                  <span>Vida: 100+ años</span>
+                  <i class="bi bi-water"></i>
+                  <span>Prof: 1-5m</span>
                 </div>
               </div>
               <p class="especie-description">
-                Una de las especies de coral más importantes para la construcción de arrecifes en el Caribe, severamente amenazada por el blanqueamiento.
+                Este coral formador de arrecifes era abundante en el Caribe, pero ha sufrido un declive del 97% debido al cambio climático, enfermedades y contaminación. Es crucial para mantener la biodiversidad marina.
               </p>
               <div class="especie-actions">
                 <button class="btn-primary" onclick="openSpeciesDetail('coral-cuerno')">
                   Ver Detalles
                 </button>
                 <button class="btn-secondary" onclick="reportSighting('coral-cuerno')">
+                  <i class="bi bi-camera"></i> Reportar Avistamiento
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Especie 4: Delfín -->
+          <div class="especie-card" data-habitat="aguas-abiertas" data-conservation="vulnerable" data-type="mamiferos">
+            <div class="especie-image">
+              <img src="https://pixabay.com/photos/dolphin-underwater-water-1199592/" alt="Delfín Mular">
+              <div class="conservation-badge vulnerable">Vulnerable</div>
+            </div>
+            <div class="especie-content">
+              <h3>Delfín Mular</h3>
+              <p class="scientific-name">Tursiops truncatus</p>
+              <div class="especie-stats">
+                <div class="stat">
+                  <i class="bi bi-rulers"></i>
+                  <span>2-4m longitud</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>Global</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-heart-pulse"></i>
+                  <span>Vida: 40-60 años</span>
+                </div>
+              </div>
+              <p class="especie-description">
+                Los delfines mulares son conocidos por su inteligencia y sociabilidad. Enfrentan amenazas por captura accidental en redes de pesca, pérdida de hábitat y contaminación marina.
+              </p>
+              <div class="especie-actions">
+                <button class="btn-primary" onclick="openSpeciesDetail('delfin-mular')">
+                  Ver Detalles
+                </button>
+                <button class="btn-secondary" onclick="reportSighting('delfin-mular')">
                   <i class="bi bi-camera"></i> Reportar Avistamiento
                 </button>
               </div>
@@ -747,5 +788,58 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/especies.js"></script>
+
+  <script>
+    function reportSighting(speciesId) {
+      // Obtener nombre de la especie según el ID
+      let speciesName = '';
+      
+      switch(speciesId) {
+        case 'tortuga-verde':
+          speciesName = 'Tortuga Marina Verde (Chelonia mydas)';
+          break;
+        case 'ballena-azul':
+          speciesName = 'Ballena Azul (Balaenoptera musculus)';
+          break;
+        case 'coral-cuerno':
+          speciesName = 'Coral Cuerno de Alce (Acropora palmata)';
+          break;
+        case 'delfin-mular':
+          speciesName = 'Delfín Mular (Tursiops truncatus)';
+          break;
+        default:
+          speciesName = 'Especie no identificada';
+      }
+      
+      // Establecer el nombre de la especie en el modal
+      document.getElementById('species-name').value = speciesName;
+      
+      // Establecer fecha actual como valor predeterminado
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('sighting-date').value = today;
+      
+      // Mostrar el modal
+      const myModal = new bootstrap.Modal(document.getElementById('reportSightingModal'));
+      myModal.show();
+    }
+
+    // Manejar el envío del formulario
+    document.getElementById('submit-sighting').addEventListener('click', function() {
+      const form = document.getElementById('sightingForm');
+      if (form.checkValidity()) {
+        // Aquí iría el código para enviar los datos al servidor
+        alert('¡Gracias por reportar este avistamiento! Tu contribución ayuda a nuestros esfuerzos de conservación.');
+        const myModal = bootstrap.Modal.getInstance(document.getElementById('reportSightingModal'));
+        myModal.hide();
+      } else {
+        // Disparar validación del navegador
+        const submitButton = document.createElement('button');
+        submitButton.type = 'submit';
+        form.appendChild(submitButton);
+        submitButton.click();
+        submitButton.remove();
+      }
+    });
+  </script>
 </body>
 </html>

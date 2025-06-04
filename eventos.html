@@ -58,15 +58,18 @@
     <section id="hero" class="hero section dark-background">
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-            <h1>Eventos y Actividades de Conservación Marina</h1>
-            <p>Únete a nuestras actividades de conservación, webinars educativos, limpiezas de playa y campañas de concientización. Juntos podemos hacer la diferencia.</p>
+          <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+            <h1>Eventos y Actividades por la Conservación Marina</h1>
+            <p>Súmate a nuestra red global de conservación a través de webinars, limpiezas de playa, conferencias y talleres. Participa activamente en la protección de nuestros océanos y conecta con personas que comparten tu pasión por la vida marina.</p>
             <div class="d-flex">
               <a href="#calendario" class="btn-get-started">Ver Calendario</a>
               <a href="#crear-evento" class="btn-watch-video d-flex align-items-center">
-                <i class="bi bi-plus-circle"></i><span>Crear Evento</span>
+                <i class="bi bi-plus-circle"></i><span>Proponer Evento</span>
               </a>
             </div>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2 hero-img">
+            <img src="https://pixabay.com/photos/beach-cleanup-volunteer-trash-4314261/" class="img-fluid rounded" alt="Evento de limpieza de playa" data-aos="zoom-in">
           </div>
         </div>
       </div>
@@ -76,7 +79,7 @@
     <section id="eventos-destacados" class="section light-background">
       <div class="container section-title" data-aos="fade-up">
         <h2>Próximos Eventos Destacados</h2>
-        <p>No te pierdas estas actividades especiales de conservación marina</p>
+        <p>Participa en estas actividades especiales de conservación marina y marca la diferencia</p>
       </div>
       
       <div class="container">
@@ -90,7 +93,7 @@
               <div class="evento-content">
                 <span class="evento-tipo webinar">Webinar</span>
                 <h4>Crisis de los Arrecifes de Coral</h4>
-                <p>Expertos internacionales discuten las amenazas actuales a los arrecifes de coral y estrategias de conservación.</p>
+                <p>Expertos internacionales discuten las amenazas actuales a los arrecifes de coral y estrategias de conservación efectivas para proteger estos ecosistemas vitales.</p>
                 <div class="evento-info">
                   <div class="info-item">
                     <i class="bi bi-clock"></i>
@@ -117,7 +120,7 @@
               <div class="evento-content">
                 <span class="evento-tipo limpieza">Limpieza</span>
                 <h4>Gran Limpieza de Playa Cancún</h4>
-                <p>Actividad presencial de limpieza en las playas de Cancún. Incluye equipo, refrigerio y certificado de participación.</p>
+                <p>Actividad presencial de limpieza en las playas de Cancún. Incluye equipo de seguridad, refrigerio, capacitación y certificado de participación ambiental.</p>
                 <div class="evento-info">
                   <div class="info-item">
                     <i class="bi bi-geo-alt"></i>
@@ -144,7 +147,7 @@
               <div class="evento-content">
                 <span class="evento-tipo conferencia">Conferencia</span>
                 <h4>Cumbre Oceánica Internacional</h4>
-                <p>Conferencia de 3 días con científicos, activistas y líderes mundiales en conservación marina.</p>
+                <p>Conferencia de 3 días con científicos, activistas y líderes mundiales en conservación marina. Incluye sesiones de networking y talleres prácticos.</p>
                 <div class="evento-info">
                   <div class="info-item">
                     <i class="bi bi-geo-alt"></i>
@@ -162,6 +165,14 @@
             </div>
           </div>
         </div>
+
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <a href="#calendario" class="btn-ver-todos">
+              Ver todos los eventos <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -169,11 +180,11 @@
     <section id="calendario" class="section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Calendario de Eventos</h2>
-        <p>Explora todos nuestros eventos programados y planifica tu participación</p>
+        <p>Explora todos nuestros eventos programados y planifica tu participación en actividades de conservación marina</p>
       </div>
       
       <div class="container">
-        <div class="calendario-container">
+        <div class="calendario-container" data-aos="fade-up">
           <div class="calendario-header">
             <div class="calendario-nav">
               <button class="nav-btn" id="prev-month">
@@ -194,7 +205,7 @@
           
           <div class="filtros-calendario">
             <div class="filter-group">
-              <label>Tipo de Evento:</label>
+              <label><i class="bi bi-tag"></i> Tipo de Evento:</label>
               <select id="tipo-filter">
                 <option value="">Todos</option>
                 <option value="webinar">Webinars</option>
@@ -206,7 +217,7 @@
             </div>
             
             <div class="filter-group">
-              <label>Modalidad:</label>
+              <label><i class="bi bi-pc-display"></i> Modalidad:</label>
               <select id="modalidad-filter">
                 <option value="">Todas</option>
                 <option value="presencial">Presencial</option>
@@ -216,7 +227,7 @@
             </div>
             
             <div class="filter-group">
-              <label>Región:</label>
+              <label><i class="bi bi-geo-alt"></i> Región:</label>
               <select id="region-filter">
                 <option value="">Todas las regiones</option>
                 <option value="mexico">México</option>
@@ -240,41 +251,223 @@
             </div>
             
             <div class="calendario-dias" id="calendario-dias">
-              <!-- Los días se generarán dinámicamente -->
+              <!-- Ejemplo de día con eventos -->
+              <div class="dia">
+                <span class="numero-dia">1</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario webinar" data-evento-id="webinar-1">Webinar: Conservación de Corales</div>
+                </div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">2</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">3</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">4</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">5</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">6</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario taller" data-evento-id="taller-1">Taller: Fotografía Marina</div>
+                </div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">7</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">8</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">9</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">10</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">11</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario limpieza" data-evento-id="limpieza-1">Limpieza: Playa Miramar</div>
+                </div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">12</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">13</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">14</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia today">
+                <span class="numero-dia">15</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario webinar" data-evento-id="webinar-2">Webinar: Arrecifes de Coral</div>
+                </div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">16</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">17</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario campana" data-evento-id="campana-1">Campaña: Sin Plástico</div>
+                </div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">18</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">19</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">20</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">21</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">22</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario limpieza" data-evento-id="limpieza-2">Limpieza: Playa Cancún</div>
+                </div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">23</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">24</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">25</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario conferencia" data-evento-id="conf-1">Charla: Cambio Climático</div>
+                </div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">26</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">27</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">28</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">29</span>
+                <div class="eventos-dia"></div>
+              </div>
+              <div class="dia">
+                <span class="numero-dia">30</span>
+                <div class="eventos-dia">
+                  <div class="evento-calendario taller" data-evento-id="taller-2">Taller: Política Ambiental</div>
+                </div>
+              </div>
             </div>
           </div>
           
           <!-- Vista Agenda -->
           <div class="agenda-view" id="agenda-view" style="display: none;">
             <div class="agenda-list" id="agenda-list">
-              <!-- Los eventos de agenda se generarán dinámicamente -->
+              <div class="agenda-date">
+                <h4>15 de Junio, 2025</h4>
+                <div class="agenda-event webinar">
+                  <div class="event-time">19:00 - 20:30 UTC</div>
+                  <div class="event-content">
+                    <h5>Webinar: Crisis de los Arrecifes de Coral</h5>
+                    <p>Expertos internacionales discuten las amenazas actuales a los arrecifes de coral y estrategias de conservación.</p>
+                    <div class="event-meta">
+                      <span><i class="bi bi-person"></i> Dr. Carlos Reyes (Oceanógrafo)</span>
+                      <span><i class="bi bi-pc-display"></i> Virtual</span>
+                    </div>
+                    <button class="btn-small" onclick="registrarEvento('webinar-arrecifes')">Registrarse</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="agenda-date">
+                <h4>17 de Junio, 2025</h4>
+                <div class="agenda-event campana">
+                  <div class="event-time">Todo el día</div>
+                  <div class="event-content">
+                    <h5>Campaña: Un Día Sin Plástico</h5>
+                    <p>Únete al reto de evitar todo tipo de plásticos desechables durante 24 horas.</p>
+                    <div class="event-meta">
+                      <span><i class="bi bi-globe"></i> Global</span>
+                      <span><i class="bi bi-people"></i> 2500+ participantes</span>
+                    </div>
+                    <button class="btn-small" onclick="registrarEvento('campana-plastico')">Participar</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="agenda-date">
+                <h4>22 de Junio, 2025</h4>
+                <div class="agenda-event limpieza">
+                  <div class="event-time">09:00 - 14:00 CST</div>
+                  <div class="event-content">
+                    <h5>Gran Limpieza de Playa Cancún</h5>
+                    <p>Actividad presencial de limpieza en las playas de Cancún. Incluye equipo, refrigerio y certificado.</p>
+                    <div class="event-meta">
+                      <span><i class="bi bi-geo-alt"></i> Playa Delfines, Cancún</span>
+                      <span><i class="bi bi-people"></i> 156 voluntarios</span>
+                    </div>
+                    <button class="btn-small" onclick="registrarEvento('limpieza-cancun')">Ser Voluntario</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         
         <!-- Leyenda -->
-        <div class="calendario-leyenda">
+        <div class="calendario-leyenda" data-aos="fade-up" data-aos-delay="100">
           <h5>Tipos de Eventos</h5>
           <div class="leyenda-items">
             <div class="leyenda-item">
               <span class="color-badge webinar"></span>
-              <span>Webinars</span>
+              <span>Webinars y Charlas Educativas</span>
             </div>
             <div class="leyenda-item">
               <span class="color-badge limpieza"></span>
-              <span>Limpiezas</span>
+              <span>Limpiezas de Playa y Costas</span>
             </div>
             <div class="leyenda-item">
               <span class="color-badge conferencia"></span>
-              <span>Conferencias</span>
+              <span>Conferencias y Simposios</span>
             </div>
             <div class="leyenda-item">
               <span class="color-badge taller"></span>
-              <span>Talleres</span>
+              <span>Talleres Prácticos</span>
             </div>
             <div class="leyenda-item">
               <span class="color-badge campana"></span>
-              <span>Campañas</span>
+              <span>Campañas y Activismo</span>
             </div>
           </div>
         </div>
