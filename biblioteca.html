@@ -58,44 +58,23 @@
             <a class="btn-getstarted" href="index.html#donation">Donar</a>
 
         </div>
-    </header>    <main class="main">
-
-        <!-- Hero Section -->
+    </header>    <main class="main">        <!-- Hero Section -->
         <section class="biblioteca-hero section dark-background">
             <div class="container">
                 <div class="row gy-4">
-                    <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="zoom-out">
                         <h1>Biblioteca de Recursos Marinos</h1>
-                        <p class="lead">Explora nuestra colección digital de materiales educativos, investigaciones científicas y recursos para la conservación marina</p>
-                        <div class="d-flex mt-4">
-                            <a href="#featured" class="btn-get-started">Explorar recursos destacados</a>
+                        <p>Explora nuestra colección digital de conservación marina</p>
+                        <div class="d-flex">
+                            <a href="#featured" class="btn-get-started">Explorar recursos</a>
                             <a href="#" class="glightbox btn-watch-video d-flex align-items-center">
-                                <i class="bi bi-info-circle"></i><span>Cómo utilizar</span>
+                                <i class="bi bi-info-circle"></i><span>Más</span>
                             </a>
-                        </div>
-                    </div>                    <div class="col-lg-5 order-1 order-lg-2 biblioteca-hero-img" data-aos="zoom-out" data-aos-delay="300">
-                        <div class="hero-floating-images">
-                            <div class="floating-card card1">
-                                <i class="bi bi-book text-primary"></i>
-                                <span>Guías</span>
-                            </div>
-                            <div class="floating-card card2">
-                                <i class="bi bi-graph-up text-info"></i>
-                                <span>Investigación</span>
-                            </div>
-                            <div class="floating-card card3">
-                                <i class="bi bi-mortarboard text-success"></i>
-                                <span>Educación</span>
-                            </div>
-                            <div class="floating-card card4">
-                                <i class="bi bi-play-circle text-danger"></i>
-                                <span>Videos</span>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>        <!-- Search Section -->
+        </section><!-- Search Section -->
         <section class="py-5">
             <div class="container">
                 <div class="search-box" data-aos="fade-up">
@@ -292,9 +271,12 @@
                         <h2 class="display-6 fw-bold" data-aos="fade-right">Recursos Destacados</h2>
                         <p class="lead" data-aos="fade-right" data-aos-delay="100">Los materiales más descargados y valorados por nuestra comunidad</p>
                     </div>
-                </div>                <div class="row g-4">
+                </div>
+                
+                <!-- Recurso principal destacado -->
+                <div class="row g-4 mb-5">
                     <div class="col-lg-8" data-aos="fade-up">
-                        <div class="card border-0 shadow-lg featured-card float-effect">
+                        <div class="card border-0 shadow-lg featured-card">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
@@ -326,7 +308,7 @@
                     </div>
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card border-0 shadow mb-4 featured-card float-effect">
+                        <div class="card border-0 shadow mb-4 featured-card">
                             <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
                                  class="card-img-top" alt="Infografía Océanos">
                             <div class="card-body">
@@ -337,8 +319,8 @@
                             </div>
                         </div>
 
-                        <div class="card border-0 shadow featured-card float-effect">
-                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                        <div class="card border-0 shadow featured-card">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
                                  class="card-img-top" alt="Video Educativo">
                             <div class="card-body">
                                 <span class="badge bg-info mb-2">Video</span>
@@ -351,22 +333,167 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section><!-- Newsletter Section -->
-        <section class="py-5 newsletter-section">
-            <div class="container text-center">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6" data-aos="fade-up">
-                        <h3 class="mb-4">Mantente Actualizado</h3>
-                        <p class="mb-4">Recibe notificaciones cuando publiquemos nuevos recursos y materiales educativos</p>
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Tu correo electrónico">
-                            <button class="btn" type="button">
-                                <i class="bi bi-bell me-2"></i>Suscribirse
-                            </button>
+                
+                <!-- Grid de recursos destacados adicionales -->
+                <h3 class="fw-bold mb-4 section-subtitle" data-aos="fade-up">Explora Más Recursos</h3>
+                
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 featured-grid">
+                    <!-- Recurso 1 -->
+                    <div class="col" data-aos="fade-up">
+                        <div class="card h-100 grid-featured-card">
+                            <div class="card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     class="card-img-top" alt="Atlas de Biodiversidad">
+                                <div class="card-overlay">
+                                    <button class="btn download-btn btn-sm">
+                                        <i class="bi bi-eye me-1"></i>Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="badge featured-badge">Atlas Digital</span>
+                                <h5 class="card-title">Atlas de Biodiversidad Marina</h5>
+                                <p class="card-text">Catálogo interactivo con mapas y datos de especies marinas en el Golfo de México.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <small class="text-muted">
+                                    <i class="bi bi-download me-1"></i>1,120 descargas
+                                </small>
+                            </div>
                         </div>
-                        <small class="opacity-75">No spam. Solo recursos de calidad sobre conservación marina.</small>
                     </div>
+                    
+                    <!-- Recurso 2 -->
+                    <div class="col" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card h-100 grid-featured-card">
+                            <div class="card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     class="card-img-top" alt="Material Educativo">
+                                <div class="card-overlay">
+                                    <button class="btn download-btn btn-sm">
+                                        <i class="bi bi-download me-1"></i>Descargar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="badge featured-badge">Educación</span>
+                                <h5 class="card-title">Plan de Estudios Marino</h5>
+                                <p class="card-text">Currículum educativo sobre océanos para escuelas primarias y secundarias.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <small class="text-muted">
+                                    <i class="bi bi-download me-1"></i>3,450 descargas
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recurso 3 -->
+                    <div class="col" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 grid-featured-card">
+                            <div class="card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1621188988909-fbef0a88dc04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     class="card-img-top" alt="Libro Digital">
+                                <div class="card-overlay">
+                                    <button class="btn download-btn btn-sm">
+                                        <i class="bi bi-download me-1"></i>Descargar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="badge featured-badge">Investigación</span>
+                                <h5 class="card-title">Especies Amenazadas: Guía Completa</h5>
+                                <p class="card-text">Catálogo completo de especies marinas en peligro de extinción en América Latina.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <small class="text-muted">
+                                    <i class="bi bi-download me-1"></i>2,780 descargas
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recurso 4 -->
+                    <div class="col" data-aos="fade-up">
+                        <div class="card h-100 grid-featured-card">
+                            <div class="card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1484402628941-0bb40fc029e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     class="card-img-top" alt="Aplicación Móvil">
+                                <div class="card-overlay">
+                                    <button class="btn download-btn btn-sm">
+                                        <i class="bi bi-phone me-1"></i>Descargar App
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="badge featured-badge">Aplicación</span>
+                                <h5 class="card-title">OceanTrack: Monitoreo Marino</h5>
+                                <p class="card-text">Aplicación para dispositivos móviles para el seguimiento de especies marinas.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <small class="text-muted">
+                                    <i class="bi bi-download me-1"></i>8,905 descargas
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recurso 5 -->
+                    <div class="col" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card h-100 grid-featured-card">
+                            <div class="card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1500576992153-0271099def59?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     class="card-img-top" alt="Podcast">
+                                <div class="card-overlay">
+                                    <button class="btn download-btn btn-sm">
+                                        <i class="bi bi-play-circle me-1"></i>Escuchar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="badge featured-badge">Podcast</span>
+                                <h5 class="card-title">Voces del Océano</h5>
+                                <p class="card-text">Serie de podcasts sobre conservación marina con expertos internacionales.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <small class="text-muted">
+                                    <i class="bi bi-headphones me-1"></i>15,230 reproducciones
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recurso 6 -->
+                    <div class="col" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 grid-featured-card">
+                            <div class="card-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     class="card-img-top" alt="Kit de Ciencia Ciudadana">
+                                <div class="card-overlay">
+                                    <button class="btn download-btn btn-sm">
+                                        <i class="bi bi-download me-1"></i>Obtener Kit
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="badge featured-badge">Ciencia Ciudadana</span>
+                                <h5 class="card-title">Kit de Monitoreo de Playas</h5>
+                                <p class="card-text">Herramientas y guías para que ciudadanos participen en el monitoreo costero.</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <small class="text-muted">
+                                    <i class="bi bi-download me-1"></i>4,120 descargas
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botón para ver más recursos -->
+                <div class="text-center mt-5" data-aos="fade-up">
+                    <button class="btn download-btn btn-lg px-5">
+                        <i class="bi bi-grid me-2"></i>Ver Todos los Recursos
+                    </button>
                 </div>
             </div>
         </section></main>    <script>
