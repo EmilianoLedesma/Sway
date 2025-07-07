@@ -28,7 +28,7 @@ function closePopup() {
 
 function confirmDonation() {
   document.getElementById('confirmation-popup').style.display = 'none';
-  window.open('/payment.html', '_blank');
+  window.open('/payment', '_blank');
 }
 function showNewsletterConfirmation() {
   const email = document.getElementById('newsletter-email').value;
@@ -50,15 +50,23 @@ function showMessageConfirmation(event) {
 }
 
 function closeMessagePopup() {
-  document.getElementById('message-popup').style.display = 'none';
+  const messagePopup = document.getElementById('message-popup');
+  if (messagePopup) {
+    messagePopup.style.display = 'none';
+  }
 }
 
 // Ensure popups are hidden on page load
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById('confirmation-popup').style.display = 'none';
-  document.getElementById('thankyou-popup').style.display = 'none';
-  document.getElementById('newsletter-popup').style.display = 'none';
-  document.getElementById('message-popup').style.display = 'none';
+  const confirmationPopup = document.getElementById('confirmation-popup');
+  const thankyouPopup = document.getElementById('thankyou-popup');
+  const newsletterPopup = document.getElementById('newsletter-popup');
+  const messagePopup = document.getElementById('message-popup');
+  
+  if (confirmationPopup) confirmationPopup.style.display = 'none';
+  if (thankyouPopup) thankyouPopup.style.display = 'none';
+  if (newsletterPopup) newsletterPopup.style.display = 'none';
+  if (messagePopup) messagePopup.style.display = 'none';
 });
 function toggleDescription(card) {
   var description = card.querySelector('.description');
@@ -158,13 +166,16 @@ function closePopup(popupId) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);

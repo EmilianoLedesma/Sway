@@ -315,13 +315,39 @@ FEATURED RESOURCES
     transform: translateY(-3px);
 }
 
-/* Grid de Recursos Destacados */
+/* Grid de Recursos Destacados - Optimizado para todas las resoluciones */
+.featured-grid {
+    margin-bottom: 4rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tarjetas con tamaño optimizado */
 .featured-grid .grid-featured-card {
     transition: all 0.3s ease;
     border: none;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    height: 100%;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 400px;
+}
+
+/* Espaciado del grid optimizado */
+.featured-grid.row {
+    justify-content: center;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 2rem;
+}
+
+/* Centrar columnas */
+.featured-grid .col {
+    display: flex;
+    justify-content: center;
 }
 
 .featured-grid .grid-featured-card:hover {
@@ -332,10 +358,12 @@ FEATURED RESOURCES
 .featured-grid .card-image-wrapper {
     position: relative;
     overflow: hidden;
+    height: 240px;
 }
 
 .featured-grid .card-img-top {
-    height: 200px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
 }
@@ -362,20 +390,35 @@ FEATURED RESOURCES
     opacity: 1;
 }
 
+.featured-grid .card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .featured-grid .card-title {
     font-family: var(--heading-font);
     color: var(--heading-color);
     font-size: 1.15rem;
     margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    height: auto;
 }
 
 .featured-grid .card-text {
     font-size: 0.9rem;
     color: var(--default-color);
+    line-height: 1.5;
+    flex-grow: 1;
 }
 
 .featured-grid .card-footer {
-    padding-top: 0;
+    padding: 0 1.5rem 1.5rem;
+    background: transparent;
+    border: none;
+    margin-top: auto;
 }
 
 .featured-badge {
@@ -389,6 +432,23 @@ FEATURED RESOURCES
     padding: 0.35rem 0.7rem;
     border-radius: 20px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Media queries para mejorar la respuesta en diferentes pantallas */
+@media (max-width: 768px) {
+    .featured-grid .row {
+        row-gap: 2rem;
+    }
+    
+    .featured-grid .grid-featured-card {
+        min-height: 350px;
+    }
+}
+
+@media (min-width: 992px) {
+    .featured-grid .grid-featured-card {
+        min-height: 420px;
+    }
 }
 
 /* 
@@ -630,6 +690,102 @@ RESPONSIVE STYLES
         margin-top: 10px;
         width: 100%;
         border-radius: 8px;
+    }
+}
+
+/* Mejoras específicas para el layout de las tarjetas */
+.featured-grid .col {
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-grid .col .card {
+    flex: 1;
+}
+
+/* Asegurar espaciado consistente entre tarjetas */
+.featured-grid.row {
+    justify-content: center;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 2rem;
+}
+
+/* Para pantallas grandes, optimizar el espaciado */
+@media (min-width: 1200px) {
+    .featured-grid.row {
+        --bs-gutter-x: 2rem;
+        --bs-gutter-y: 2.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .featured-grid.row {
+        --bs-gutter-x: 2.5rem;
+        --bs-gutter-y: 3rem;
+    }
+}
+
+/* Centrar el contenido cuando hay menos de 3 elementos en la fila */
+.featured-grid .col {
+    display: flex;
+    justify-content: center;
+}
+
+/* Asegurar que las tarjetas mantengan proporciones consistentes */
+.featured-grid .card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+}
+
+/* Mejorar el diseño de los badges para pantallas grandes */
+@media (min-width: 1200px) {
+    .featured-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .featured-grid .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .featured-grid .card-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Mejoras para el footer de las tarjetas */
+.featured-grid .card-footer {
+    padding: 0 1.5rem 1.5rem;
+    background: transparent;
+    border: none;
+    margin-top: auto;
+}
+
+@media (min-width: 1400px) {
+    .featured-grid .card-footer {
+        padding: 0 2rem 2rem;
+    }
+}
+
+/* Optimización final para pantallas ultra anchas */
+@media (min-width: 1920px) {
+    .featured-grid {
+        max-width: 1920px;
+        padding: 0 4rem;
+    }
+    
+    .featured-grid .grid-featured-card {
+        max-width: 560px;
+        min-height: 500px;
+    }
+    
+    .featured-grid .card-image-wrapper {
+        height: 300px;
     }
 }
 

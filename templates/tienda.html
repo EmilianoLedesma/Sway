@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tienda - SWAY</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/SWAY (1).png" rel="icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/tienda.css" rel="stylesheet" />
+    <link href="assets/css/carrito.css" rel="stylesheet" />
+  </head>
+
+  <body class="tienda-page">
+    <!-- Header -->
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="/" class="logo d-flex align-items-center me-auto">
+          <h1 class="sitename">SWAY</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">Nosotros</a></li>
+            <li><a href="/#portfolio">Novedades</a></li>
+            <li><a href="/#team">Equipo</a></li>
+            <li><a href="/#contact">Contacto</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Más</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="/especies">Especies</a></li>
+                <li><a href="/eventos">Eventos</a></li>
+                <li><a href="/biblioteca">Biblioteca</a></li>
+                <li><a href="/tienda" class="active">Tienda</a></li>
+              </ul>
+            </li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <!-- Botón de usuario y donar -->
+        <div class="header-actions d-flex align-items-center">
+          <div class="user-menu" id="user-menu">
+            <button class="btn-user" id="btn-user">
+              <i class="bi bi-person"></i>
+              <span id="user-name">Iniciar Sesión</span>
+            </button>
+            <div class="user-dropdown" id="user-dropdown">
+              <a href="#" id="btn-login">Iniciar Sesión</a>
+              <a href="#" id="btn-register">Registrarse</a>
+              <a href="#" id="btn-my-orders" style="display: none"
+                >Mis Pedidos</a
+              >
+              <a href="#" id="btn-logout" style="display: none"
+                >Cerrar Sesión</a
+              >
+            </div>
+          </div>
+          <a class="btn-getstarted" href="/#donation">Donar</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero section dark-background">
+        <div class="container">
+          <div class="row gy-4">
+            <div
+              class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center"
+              data-aos="zoom-out"
+            >
+              <h1>Tienda Oceánica SWAY</h1>
+              <p>
+                Productos sostenibles que apoyan la conservación marina. Cada
+                compra contribuye directamente a nuestros proyectos de
+                protección oceánica.
+              </p>
+              <div class="d-flex">
+                <a href="#productos" class="btn-get-started">Ver Productos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filtros Section -->
+      <section id="filtros" class="section light-background">
+        <div class="container">
+          <div class="filtros-container">
+            <div class="filtros-header">
+              <h3>Filtrar por categoría</h3>
+              <div class="busqueda">
+                <input
+                  type="text"
+                  placeholder="Buscar productos..."
+                  id="search-input"
+                />
+                <i class="bi bi-search"></i>
+              </div>
+            </div>
+
+            <div class="filtros-botones">
+              <!-- Los filtros se cargan dinámicamente desde JavaScript -->
+              <button class="filtro-btn active" data-filter="*">Todos</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Productos Section -->
+      <section id="productos" class="section">
+        <div class="container">
+          <div class="row gy-4 productos-grid">
+            <!-- Los productos se cargan dinámicamente desde JavaScript -->
+            <div class="col-12 text-center py-5">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando productos...</span>
+              </div>
+              <p class="mt-3">Cargando productos...</p>
+            </div>
+          </div>
+
+          <!-- Load More Button -->
+          <div class="text-center mt-5">
+            <button class="btn btn-outline-primary btn-lg" id="load-more-btn">
+              <i class="bi bi-arrow-down-circle me-2"></i>Cargar Más Productos
+            </button>
+          </div>
+
+          <!-- Carrito flotante -->
+          <div class="carrito-flotante" id="carrito-flotante">
+            <div class="carrito-header">
+              <i class="bi bi-cart3"></i>
+              <span class="carrito-count">0</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sustainability Impact Section -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+              <h2 class="display-6 fw-bold mb-4">Impacto Sostenible</h2>
+              <p class="lead mb-4">
+                Cada compra contribuye directamente a la conservación marina y
+                al desarrollo de comunidades costeras.
+              </p>
+
+              <div class="impact-metrics">
+                <div class="metric-item">
+                  <div class="metric-icon">
+                    <i class="bi bi-droplet-fill"></i>
+                  </div>
+                  <div class="metric-info">
+                    <h4>Cargando...</h4>
+                    <p>Agua marina limpiada gracias a las ventas de 2024</p>
+                  </div>
+                </div>
+
+                <div class="metric-item">
+                  <div class="metric-icon">
+                    <i class="bi bi-tree-fill"></i>
+                  </div>
+                  <div class="metric-info">
+                    <h4>Cargando...</h4>
+                    <p>Corales plantados en arrecifes mexicanos</p>
+                  </div>
+                </div>
+
+                <div class="metric-item">
+                  <div class="metric-icon">
+                    <i class="bi bi-people-fill"></i>
+                  </div>
+                  <div class="metric-info">
+                    <h4>Cargando...</h4>
+                    <p>Familias de pescadores beneficiadas</p>
+                  </div>
+                </div>
+
+                <div class="metric-item">
+                  <div class="metric-icon">
+                    <i class="bi bi-recycle"></i>
+                  </div>
+                  <div class="metric-info">
+                    <h4>Cargando...</h4>
+                    <p>Plástico reciclado convertido en productos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left">
+              <div class="sustainability-visual">
+                <img
+                  src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Impacto Sostenible"
+                  class="img-fluid rounded"
+                />
+                <div class="impact-overlay">
+                  <div class="impact-badge">
+                    <i class="bi bi-award-fill"></i>
+                    <span>Certificado B-Corp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer Section -->
+    <footer id="footer" class="footer">
+      <div class="footer-newsletter">
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <div class="col-lg-6">
+              <h4>Únete a nuestro newsletter</h4>
+              <p>
+                Subscríbete para obtener las últimas noticias y eventos más
+                importantes!
+              </p>
+              <div class="newsletter-form">
+                <input type="email" name="email" id="newsletter-email" />
+                <input
+                  type="submit"
+                  value="Subscribirse"
+                  onclick="showNewsletterConfirmation()"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- newletter Section -->
+      <div id="newsletter-popup" class="popup">
+        <div class="popup-content">
+          <span class="close-button" onclick="closeNewsletterPopup()"
+            >&times;</span
+          >
+          <p>¡Gracias por suscribirte a nuestro newsletter!</p>
+        </div>
+      </div>
+      <!-- /End nesletter Section -->
+
+      <div class="container footer-top">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="d-flex align-items-center">
+              <span class="sitename">SWAY</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>Carretera Estatal 420 S/N, El Rosario</p>
+              <p>76240, Santiago de Querétaro, Qro</p>
+              <p class="mt-3">
+                <strong>Telefóno:</strong> <span>+52 442 101 9000</span>
+              </p>
+              <p><strong>Email:</strong> <span>123046244@upq.edu.mx</span></p>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Links útiles</h4>
+            <ul>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="index.html#about">Sobre Nosotros</a>
+              </li>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="index.html#donation">Donar</a>
+              </li>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="#">Términos de Servicio</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Entérate de más</h4>
+            <ul>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="toma-accion.html">Toma acción</a>
+              </li>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="starter-page.html">Blog</a>
+              </li>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="starter-page.html">Casos de Éxito</a>
+              </li>
+              <li>
+                <i class="bi bi-chevron-right"></i>
+                <a href="#">Patrocinadores</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-12">
+            <h4>Síguenos</h4>
+            <p>Mantente en contacto a través de nuestras redes sociales</p>
+            <div class="social-links d-flex">
+              <a href="https://x.com/UPQoficial"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="https://www.facebook.com/UPQoficial?locale=es_LA"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="https://www.instagram.com/soyupq/"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="https://www.linkedin.com/school/upq/posts/?feedView=all"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container copyright text-center mt-4">
+        <p>
+          © <span>Copyright</span> <strong class="px-1 sitename">SWAY</strong>
+          <span>Todos los derechos reservados</span>
+        </p>
+      </div>
+    </footer>
+    <!-- /End footer Section -->
+
+    <!-- Scroll Top -->
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Modal Vista Rápida -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeQuickView()">&times;</button>
+        <div class="modal-body" id="modal-body">
+          <!-- Contenido dinámico del producto -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Login -->
+    <div class="modal-overlay" id="login-modal" style="display: none">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('login-modal')">
+          &times;
+        </button>
+        <div class="modal-body">
+          <h4>Iniciar Sesión</h4>
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="loginEmail"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="loginPassword"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              Iniciar Sesión
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Registro -->
+    <div class="modal-overlay" id="register-modal" style="display: none">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('register-modal')">
+          &times;
+        </button>
+        <div class="modal-body">
+          <h4>Registrarse</h4>
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="registerName" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="registerName"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="registerEmail"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="registerTelefono" class="form-label">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="registerTelefono"
+                placeholder="Ej: 555-123-4567"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="registerFechaNacimiento" class="form-label"
+                >Fecha de Nacimiento</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="registerFechaNacimiento"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label"
+                >Contraseña</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="registerPassword"
+                required
+              />
+            </div>
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="registerNewsletter"
+              />
+              <label class="form-check-label" for="registerNewsletter">
+                Suscribirme al newsletter para recibir noticias sobre
+                conservación marina
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              Registrarse
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Carrito -->
+    <div class="modal-overlay" id="cart-modal" style="display: none">
+      <div class="modal-content" style="max-width: 800px">
+        <button class="modal-close" onclick="closeModal('cart-modal')">
+          &times;
+        </button>
+        <div class="modal-body">
+          <h3>Tu Carrito de Compras</h3>
+          <div id="cart-items-container">
+            <!-- Los items del carrito se cargan dinámicamente -->
+          </div>
+          <div class="cart-total mt-3">
+            <h4>Total: $<span id="cart-total">0.00</span></h4>
+          </div>
+          <div class="cart-actions mt-3">
+            <button class="btn btn-outline-danger" onclick="clearCart()">
+              <i class="bi bi-trash"></i> Vaciar Carrito
+            </button>
+            <button class="btn btn-primary" onclick="proceedToCheckout()">
+              <i class="bi bi-credit-card"></i> Proceder al Pago
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Checkout -->
+    <div class="modal-overlay" id="checkout-modal" style="display: none">
+      <div class="modal-content" style="max-width: 900px">
+        <button class="modal-close" onclick="closeModal('checkout-modal')">
+          &times;
+        </button>
+        <div class="modal-body">
+          <h3>Finalizar Compra</h3>
+
+          <!-- Información de Envío -->
+          <div class="checkout-section">
+            <h5>Información de Envío</h5>
+            <form id="checkout-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label">Nombre Completo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipping-name"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Teléfono</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="shipping-phone"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label class="form-label">Estado</label>
+                  <select
+                    class="form-control"
+                    id="shipping-state"
+                    onchange="loadMunicipios()"
+                    required
+                  >
+                    <option value="">Seleccionar Estado</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Municipio</label>
+                  <select
+                    class="form-control"
+                    id="shipping-municipio"
+                    onchange="loadColonias()"
+                    required
+                  >
+                    <option value="">Seleccionar Municipio</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label class="form-label">Colonia</label>
+                  <select
+                    class="form-control"
+                    id="shipping-colonia"
+                    onchange="loadCalles()"
+                    required
+                  >
+                    <option value="">Seleccionar Colonia</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Calle</label>
+                  <select class="form-control" id="shipping-calle" required>
+                    <option value="">Seleccionar Calle</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Información de Pago -->
+              <h5 class="mt-4">Información de Pago</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label">Número de Tarjeta</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="card-number"
+                    placeholder="1234 5678 9012 3456"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Nombre en la Tarjeta</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="card-name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-4">
+                  <label class="form-label">Fecha de Vencimiento</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="card-expiry"
+                    placeholder="MM/YY"
+                    required
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">CVV</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="card-cvv"
+                    placeholder="123"
+                    required
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Tipo de Tarjeta</label>
+                  <select class="form-control" id="card-type" required>
+                    <option value="">Seleccionar</option>
+                    <option value="1">Visa</option>
+                    <option value="2">Mastercard</option>
+                    <option value="3">American Express</option>
+                    <option value="4">Débito</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="order-summary mt-4">
+                <h5>Resumen del Pedido</h5>
+                <div id="checkout-items"></div>
+                <hr />
+                <div class="total-amount">
+                  <strong>Total: $<span id="checkout-total">0.00</span></strong>
+                </div>
+              </div>
+
+              <div class="checkout-actions mt-4">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="closeModal('checkout-modal')"
+                >
+                  Cancelar
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-credit-card"></i> Confirmar Compra
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/tienda.js"></script>
+
+    <!-- Forzar remoción del preloader -->
+    <script>
+      // Función para remover el preloader
+      function removerPreloader() {
+        const preloader = document.querySelector("#preloader");
+        if (preloader) {
+          console.log("Removiendo preloader...");
+          preloader.style.display = "none";
+          preloader.style.visibility = "hidden";
+          preloader.style.opacity = "0";
+          preloader.style.zIndex = "-9999";
+          preloader.remove();
+          document.body.style.visibility = "visible";
+          document.body.style.opacity = "1";
+          return true;
+        }
+        return false;
+      }
+
+      // Ejecutar inmediatamente
+      removerPreloader();
+
+      // Forzar inmediatamente la remoción del preloader
+      document.addEventListener("DOMContentLoaded", function () {
+        removerPreloader();
+      });
+
+      // Backup adicional con múltiples timeouts
+      setTimeout(removerPreloader, 1);
+      setTimeout(removerPreloader, 10);
+      setTimeout(removerPreloader, 100);
+      setTimeout(removerPreloader, 500);
+      setTimeout(removerPreloader, 1000);
+
+      // Observer para detectar si el preloader se agrega dinámicamente
+      const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.type === "childList") {
+            mutation.addedNodes.forEach(function (node) {
+              if (
+                node.nodeType === 1 &&
+                (node.id === "preloader" || node.querySelector("#preloader"))
+              ) {
+                console.log(
+                  "Preloader detectado por MutationObserver, removiendo..."
+                );
+                removerPreloader();
+              }
+            });
+          }
+        });
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    </script>
+  </body>
+</html>
