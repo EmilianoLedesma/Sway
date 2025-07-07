@@ -1664,94 +1664,243 @@ def get_categories():
             'message': f'Error al obtener categorías: {str(e)}'
         }), 500
 
-# Endpoints de prueba (comentados para producción)
-# @app.route('/api/test/user/<int:user_id>')
-# def test_user_data(user_id):
-#     """Endpoint de prueba para verificar datos del usuario"""
-#     try:
-#         conn = get_db_connection()
-#         cursor = conn.cursor()
-#         
-#         # Obtener información de la tabla Usuarios
-#         cursor.execute("""
-#             SELECT id, nombre, email, telefono, fecha_registro, fecha_nacimiento, password_hash
-#             FROM Usuarios 
-#             WHERE id = ?
-#         """, (user_id,))
-#         
-#         user = cursor.fetchone()
-#         
-#         if user:
-#             # También obtener los nombres de las columnas
-#             columns = [column[0] for column in cursor.description]
-#             user_dict = dict(zip(columns, user))
-#             
-#             # Convertir fechas a string para JSON
-#             if user_dict.get('fecha_registro'):
-#                 user_dict['fecha_registro'] = user_dict['fecha_registro'].isoformat()
-#             if user_dict.get('fecha_nacimiento'):
-#                 user_dict['fecha_nacimiento'] = user_dict['fecha_nacimiento'].isoformat()
-#             
-#             conn.close()
-#             return jsonify({
-#                 'success': True,
-#                 'user': user_dict,
-#                 'columns': columns
-#             })
-#         else:
-#             conn.close()
-#             return jsonify({
-#                 'success': False,
-#                 'message': 'Usuario no encontrado'
-#             })
-#     except Exception as e:
-#         return jsonify({
-#             'success': False,
-#             'error': str(e)
-#         })
+# =============================================
+# ENDPOINTS DE CONTACTO
+# =============================================
 
-# @app.route('/api/test/table-structure')
-# def test_table_structure():
-#     """Endpoint para verificar la estructura de la tabla Usuarios"""
-#     try:
-#         conn = get_db_connection()
-#         cursor = conn.cursor()
-#         
-#         # Obtener información de la estructura de la tabla
-#         cursor.execute("""
-#             SELECT 
-#                 COLUMN_NAME,
-#                 DATA_TYPE,
-#                 CHARACTER_MAXIMUM_LENGTH,
-#                 IS_NULLABLE,
-#                 COLUMN_DEFAULT
-#             FROM INFORMATION_SCHEMA.COLUMNS
-#             WHERE TABLE_NAME = 'Usuarios'
-#             ORDER BY ORDINAL_POSITION
-#         """)
-#         
-#         columns = cursor.fetchall()
-#         
-#         structure = []
-#         for col in columns:
-#             structure.append({
-#                 'name': col[0],
-#                 'type': col[1],
-#                 'max_length': col[2],
-#                 'nullable': col[3],
-#                 'default': col[4]
-#             })
-#         
-#         conn.close()
-#         return jsonify({
-#             'success': True,
-#             'table_structure': structure
-#         })
-#     except Exception as e:
-#         return jsonify({
-#             'success': False,
-#             'error': str(e)
-#         })
+@app.route('/api/contacto', methods=['POST'])
+def enviar_contacto():
+    """Enviar mensaje de contacto"""
+    try:
+        data = request.get_json()
+        
+        # Validar datos requeridos
+        if not data.get('name') or not data.get('email') or not data.get('subject') or not data.get('message'):
+            return jsonify({
+                'success': False,
+                'message': 'Todos los campos son requeridos'
+            }), 400
+        
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({
+                'success': False,
+                'message': 'Error de conexión a la base de datos'
+            }), 500
+        
+        cursor = conn.cursor()
+        
+        # 1. Verificar si el usuario ya existe por email
+        cursor.execute("SELECT id FROM Usuarios WHERE email = ?", (data['email'],))
+        user_row = cursor.fetchone()
+        
+        if user_row:
+            user_id = user_row.id
+        else:
+            # 2. Crear nuevo usuario con solo nombre y email
+            cursor.execute("""
+                INSERT INTO Usuarios (nombre, email, suscrito_newsletter, activo)
+                VALUES (?, ?, 0, 1)
+            """, (data['name'], data['email']))
+            
+            # Obtener el ID del usuario creado
+            cursor.execute("SELECT @@IDENTITY")
+            user_id = cursor.fetchone()[0]
+        
+        # 3. Insertar mensaje de contacto
+        cursor.execute("""
+            INSERT INTO Contactos (id_usuario, asunto, mensaje, fecha_contacto, respondido)
+            VALUES (?, ?, ?, GETDATE(), 0)
+        """, (user_id, data['subject'], data['message']))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': 'Mensaje enviado exitosamente. Te contactaremos pronto.'
+        })
+        
+    except Exception as e:
+        print(f"Error en enviar_contacto: {e}")
+        return jsonify({
+            'success': False,
+            'message': 'Error interno del servidor'
+        }), 500
+
+# =============================================
+# ENDPOINTS DE EVENTOS
+# =============================================
+
+@app.route('/api/tipos-evento')
+def get_tipos_evento():
+    """Obtener todos los tipos de evento únicos"""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'error': 'Error de conexión a la base de datos'}), 500
+        
+        cursor = conn.cursor()
+        # Usar GROUP BY para eliminar duplicados manteniendo el primer registro
+        query = """
+        SELECT MIN(id) as id, nombre, 
+               (SELECT TOP 1 descripcion FROM TiposEvento t2 
+                WHERE t2.nombre = t1.nombre ORDER BY id) as descripcion
+        FROM TiposEvento t1
+        GROUP BY nombre 
+        ORDER BY nombre
+        """
+        cursor.execute(query)
+        
+        tipos = []
+        for row in cursor.fetchall():
+            tipos.append({
+                'id': row.id,
+                'nombre': row.nombre,
+                'descripcion': row.descripcion
+            })
+        
+        conn.close()
+        return jsonify({'tipos_evento': tipos})
+        
+    except Exception as e:
+        print(f"Error en get_tipos_evento: {e}")
+        return jsonify({'error': 'Error interno del servidor'}), 500
+
+@app.route('/api/modalidades')
+def get_modalidades():
+    """Obtener todas las modalidades únicas"""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'error': 'Error de conexión a la base de datos'}), 500
+        
+        cursor = conn.cursor()
+        # Usar GROUP BY para eliminar duplicados manteniendo el primer registro
+        query = """
+        SELECT MIN(id) as id, nombre
+        FROM Modalidades 
+        GROUP BY nombre 
+        ORDER BY nombre
+        """
+        cursor.execute(query)
+        
+        modalidades = []
+        for row in cursor.fetchall():
+            modalidades.append({
+                'id': row.id,
+                'nombre': row.nombre
+            })
+        
+        conn.close()
+        return jsonify({'modalidades': modalidades})
+        
+    except Exception as e:
+        print(f"Error en get_modalidades: {e}")
+        return jsonify({'error': 'Error interno del servidor'}), 500
+
+@app.route('/api/eventos/crear', methods=['POST'])
+def crear_evento():
+    """Crear nuevo evento"""
+    try:
+        data = request.get_json()
+        
+        # Validar datos requeridos
+        required_fields = ['titulo', 'descripcion', 'fecha_evento', 'hora_inicio', 'id_tipo_evento', 'id_modalidad']
+        for field in required_fields:
+            if not data.get(field):
+                return jsonify({
+                    'success': False,
+                    'message': f'El campo {field} es requerido'
+                }), 400
+        
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({
+                'success': False,
+                'message': 'Error de conexión a la base de datos'
+            }), 500
+        
+        cursor = conn.cursor()
+        
+        # Verificar si el usuario está autenticado
+        user_id = None
+        if 'user_id' in session:
+            user_id = session['user_id']
+        else:
+            # Crear usuario temporal con solo nombre y email de contacto
+            cursor.execute("""
+                INSERT INTO Usuarios (nombre, email, suscrito_newsletter, activo)
+                VALUES (?, ?, 0, 1)
+            """, (data.get('nombre_organizador', 'Organizador'), data.get('contacto')))
+            
+            cursor.execute("SELECT @@IDENTITY")
+            user_id = cursor.fetchone()[0]
+        
+        # Verificar si ya existe un organizador para este usuario
+        cursor.execute("SELECT id FROM Organizadores WHERE id_usuario = ?", (user_id,))
+        organizador_row = cursor.fetchone()
+        
+        if organizador_row:
+            organizador_id = organizador_row.id
+        else:
+            # Crear nuevo organizador
+            cursor.execute("""
+                INSERT INTO Organizadores (id_usuario, experiencia_eventos, certificado)
+                VALUES (?, 0, 0)
+            """, (user_id,))
+            
+            cursor.execute("SELECT @@IDENTITY")
+            organizador_id = cursor.fetchone()[0]
+        
+        # Manejar la dirección/ubicación
+        direccion_id = None
+        if data.get('url_evento'):
+            # Para eventos virtuales, no necesitamos dirección física
+            url_evento = data.get('url_evento')
+        else:
+            url_evento = None
+        
+        # Insertar el evento
+        cursor.execute("""
+            INSERT INTO Eventos (
+                titulo, descripcion, fecha_evento, hora_inicio, hora_fin,
+                id_tipo_evento, id_modalidad, url_evento, capacidad_maxima,
+                costo, id_organizador, id_estatus
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+        """, (
+            data['titulo'],
+            data['descripcion'],
+            data['fecha_evento'],
+            data['hora_inicio'],
+            data.get('hora_fin'),
+            data['id_tipo_evento'],
+            data['id_modalidad'],
+            url_evento,
+            data.get('capacidad_maxima', 50),
+            data.get('costo', 0),
+            organizador_id
+        ))
+        
+        cursor.execute("SELECT @@IDENTITY")
+        evento_id = cursor.fetchone()[0]
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'evento_id': evento_id,
+            'message': 'Evento creado exitosamente. Será revisado y publicado pronto.'
+        })
+        
+    except Exception as e:
+        print(f"Error en crear_evento: {e}")
+        return jsonify({
+            'success': False,
+            'message': 'Error interno del servidor'
+        }), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

@@ -3,6 +3,7 @@ let currentDate = new Date();
 let currentView = 'mes';
 let eventosData = [];
 let filteredEventos = [];
+let datosFormularioCargados = false; // Variable para controlar la carga de datos del formulario
 
 // Datos simulados de eventos
 const eventosSample = [
@@ -56,11 +57,19 @@ const eventosSample = [
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOMContentLoaded ejecutado en eventos.js');
   eventosData = generarEventosCalendario();
   filteredEventos = [...eventosData];
   setupEventListeners();
   renderCalendario();
   renderAgenda();
+  
+  // Cargar datos para el formulario (solo una vez)
+  if (!datosFormularioCargados) {
+    cargarTiposEvento();
+    cargarModalidades();
+    datosFormularioCargados = true;
+  }
   
   // Testimonial Carousel
   if (testimonials.length > 0) {
@@ -421,41 +430,157 @@ function crearEvento(e) {
   e.preventDefault();
   
   const formData = new FormData(e.target);
-  const nuevoEvento = {
-    id: `evento-user-${Date.now()}`,
+  
+  // Crear objeto con los datos del formulario
+  const eventoData = {
     titulo: formData.get('titulo'),
-    tipo: formData.get('tipo'),
-    fecha: formData.get('fecha'),
-    hora: formData.get('hora'),
-    modalidad: formData.get('modalidad'),
-    ubicacion: formData.get('ubicacion'),
     descripcion: formData.get('descripcion'),
-    capacidad: parseInt(formData.get('capacidad')) || 50,
-    inscritos: 0,
-    costo: formData.get('costo'),
-    organizador: 'Usuario',
-    region: 'mexico'
+    fecha_evento: formData.get('fecha_evento'),
+    hora_inicio: formData.get('hora_inicio'),
+    hora_fin: formData.get('hora_fin') || null,
+    id_tipo_evento: parseInt(formData.get('tipo')),
+    id_modalidad: parseInt(formData.get('modalidad')),
+    url_evento: formData.get('ubicacion'),
+    capacidad_maxima: parseInt(formData.get('capacidad_maxima')) || null,
+    costo: parseFloat(formData.get('costo')) || 0,
+    contacto: formData.get('contacto')
   };
   
   // Validaciones básicas
-  if (!nuevoEvento.titulo || !nuevoEvento.fecha || !nuevoEvento.hora) {
-    alert('Por favor completa todos los campos obligatorios');
+  if (!eventoData.titulo || !eventoData.fecha_evento || !eventoData.hora_inicio) {
+    mostrarModalCrearEvento('Campos obligatorios', 'Por favor completa todos los campos obligatorios', 'error');
     return;
   }
   
-  // Agregar a la lista de eventos
-  eventosData.push(nuevoEvento);
-  filteredEventos = [...eventosData];
-  
-  // Renderizar de nuevo
-  renderCalendario();
-  renderAgenda();
-  
-  // Limpiar formulario
-  e.target.reset();
-  
-  // Mostrar confirmación
-  alert('¡Evento creado exitosamente!\n\nTu evento será revisado y publicado en las próximas 24 horas.');
+  // Enviar datos al servidor
+  fetch('/api/eventos/crear', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(eventoData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Limpiar formulario
+      e.target.reset();
+      
+      // Mostrar modal de éxito
+      mostrarModalCrearEvento('¡Evento creado exitosamente!', data.message, 'success');
+      
+      // Opcional: agregar a la vista local
+      const nuevoEvento = {
+        id: `evento-${data.evento_id}`,
+        titulo: eventoData.titulo,
+        tipo: document.querySelector('#tipo-evento option:checked').textContent,
+        fecha: eventoData.fecha_evento,
+        hora: eventoData.hora_inicio,
+        modalidad: document.querySelector('#modalidad-evento option:checked').textContent,
+        ubicacion: eventoData.url_evento,
+        descripcion: eventoData.descripcion,
+        capacidad: eventoData.capacidad_maxima || 50,
+        inscritos: 0,
+        costo: eventoData.costo === 0 ? 'gratuito' : 'pago',
+        organizador: 'Usuario',
+        region: 'mexico'
+      };
+      
+      eventosData.push(nuevoEvento);
+      filteredEventos = [...eventosData];
+      renderCalendario();
+      renderAgenda();
+    } else {
+      mostrarModalCrearEvento('Error al crear evento', data.message, 'error');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    mostrarModalCrearEvento('Error de conexión', 'Error al crear el evento. Por favor intenta de nuevo.', 'error');
+  });
+}
+
+// Función para cargar tipos de evento desde la base de datos
+async function cargarTiposEvento() {
+  try {
+    const select = document.getElementById('tipo-evento');
+    if (!select) {
+      console.log('Elemento tipo-evento no encontrado');
+      return;
+    }
+    
+    // Verificar si ya tiene datos cargados para evitar duplicados
+    if (select.dataset.cargado === 'true') {
+      console.log('Tipos de evento ya cargados, saltando...');
+      return;
+    }
+    
+    const response = await fetch('/api/tipos-evento');
+    const data = await response.json();
+    
+    // Limpiar el select antes de cargar
+    select.innerHTML = '';
+    
+    // Agregar opción por defecto
+    select.appendChild(new Option('Seleccionar tipo', ''));
+    
+    // Agregar opciones de la base de datos
+    data.tipos_evento.forEach(tipo => {
+      const option = document.createElement('option');
+      option.value = tipo.id;
+      option.textContent = tipo.nombre;
+      option.title = tipo.descripcion;
+      select.appendChild(option);
+    });
+    
+    // Marcar como cargado
+    select.dataset.cargado = 'true';
+    
+    console.log(`${data.tipos_evento.length} tipos de evento únicos cargados`);
+  } catch (error) {
+    console.error('Error al cargar tipos de evento:', error);
+  }
+}
+
+// Función para cargar modalidades desde la base de datos
+async function cargarModalidades() {
+  try {
+    const select = document.getElementById('modalidad-evento');
+    if (!select) {
+      console.log('Elemento modalidad-evento no encontrado');
+      return;
+    }
+    
+    // Verificar si ya tiene datos cargados para evitar duplicados
+    if (select.dataset.cargado === 'true') {
+      console.log('Modalidades ya cargadas, saltando...');
+      return;
+    }
+    
+    const response = await fetch('/api/modalidades');
+    const data = await response.json();
+    
+    // Limpiar el select antes de cargar
+    select.innerHTML = '';
+    
+    // Agregar opción por defecto
+    select.appendChild(new Option('Seleccionar modalidad', ''));
+    
+    // Agregar opciones de la base de datos
+    data.modalidades.forEach(modalidad => {
+      const option = document.createElement('option');
+      option.value = modalidad.id;
+      option.textContent = modalidad.nombre;
+      select.appendChild(option);
+    });
+    
+    // Marcar como cargado
+    select.dataset.cargado = 'true';
+    
+    console.log(`${data.modalidades.length} modalidades únicas cargadas`);
+  } catch (error) {
+    console.error('Error al cargar modalidades:', error);
+  }
 }
 
 // Testimonial Carousel Functionality
@@ -484,3 +609,65 @@ function changeTestimonial(direction) {
 setInterval(() => {
   changeTestimonial(1);
 }, 5000);
+
+// Funciones para el modal de crear evento
+function mostrarModalCrearEvento(titulo, mensaje, tipo = 'success') {
+  const modal = document.getElementById('crear-evento-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalMessage = document.getElementById('modal-message');
+  const modalIcon = modal.querySelector('.modal-icon i');
+  
+  // Configurar el título
+  modalTitle.textContent = titulo;
+  
+  // Configurar el mensaje
+  modalMessage.textContent = mensaje;
+  
+  // Configurar el icono según el tipo
+  if (tipo === 'success') {
+    modalIcon.className = 'bi bi-check-circle-fill text-success';
+    modalIcon.style.color = '#28a745';
+  } else if (tipo === 'error') {
+    modalIcon.className = 'bi bi-x-circle-fill text-danger';
+    modalIcon.style.color = '#dc3545';
+  } else if (tipo === 'warning') {
+    modalIcon.className = 'bi bi-exclamation-triangle-fill text-warning';
+    modalIcon.style.color = '#ffc107';
+  }
+  
+  // Mostrar el modal
+  modal.style.display = 'flex';
+  modal.classList.add('show');
+  
+  // Enfocar el modal para accesibilidad
+  modal.setAttribute('aria-hidden', 'false');
+  
+  // Agregar evento para cerrar con Escape
+  document.addEventListener('keydown', handleEscapeKey);
+}
+
+function closeCrearEventoModal() {
+  const modal = document.getElementById('crear-evento-modal');
+  
+  // Ocultar el modal
+  modal.classList.remove('show');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  
+  // Remover el evento de escape
+  document.removeEventListener('keydown', handleEscapeKey);
+}
+
+function handleEscapeKey(event) {
+  if (event.key === 'Escape') {
+    closeCrearEventoModal();
+  }
+}
+
+// Cerrar modal al hacer clic fuera de él
+document.addEventListener('click', function(event) {
+  const modal = document.getElementById('crear-evento-modal');
+  if (event.target === modal) {
+    closeCrearEventoModal();
+  }
+});

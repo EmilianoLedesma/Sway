@@ -49,6 +49,58 @@ function showMessageConfirmation(event) {
   // Here you would normally send the form data to the server using AJAX
 }
 
+// Nueva función para enviar contacto
+async function enviarContacto(event) {
+  event.preventDefault();
+  
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const messagePopup = document.getElementById('message-popup');
+  const messageText = document.getElementById('message-popup-text');
+  
+  // Deshabilitar botón durante el envío
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Enviando...';
+  
+  // Obtener datos del formulario
+  const formData = {
+    name: document.getElementById('name-field').value,
+    email: document.getElementById('email-field').value,
+    subject: document.getElementById('subject-field').value,
+    message: document.getElementById('message-field').value
+  };
+  
+  try {
+    const response = await fetch('/api/contacto', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      messageText.textContent = result.message;
+      messagePopup.style.display = 'flex';
+      form.reset(); // Limpiar formulario
+    } else {
+      messageText.textContent = result.message || 'Error al enviar el mensaje';
+      messagePopup.style.display = 'flex';
+    }
+    
+  } catch (error) {
+    console.error('Error:', error);
+    messageText.textContent = 'Error de conexión. Por favor, intenta de nuevo.';
+    messagePopup.style.display = 'flex';
+  } finally {
+    // Restaurar botón
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar mensaje';
+  }
+}
+
 function closeMessagePopup() {
   const messagePopup = document.getElementById('message-popup');
   if (messagePopup) {

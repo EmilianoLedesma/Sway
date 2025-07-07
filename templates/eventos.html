@@ -644,13 +644,8 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label>Tipo de Evento *</label>
-                        <select name="tipo" required>
-                          <option value="">Seleccionar tipo</option>
-                          <option value="webinar">Webinar</option>
-                          <option value="limpieza">Limpieza de Playa</option>
-                          <option value="conferencia">Conferencia</option>
-                          <option value="taller">Taller</option>
-                          <option value="campana">Campaña</option>
+                        <select name="tipo" id="tipo-evento" required>
+                          <!-- Se llenará dinámicamente desde la base de datos -->
                         </select>
                       </div>
                     </div>
@@ -660,13 +655,18 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label>Fecha *</label>
-                        <input type="date" name="fecha" required />
+                        <input type="date" name="fecha_evento" required />
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label>Hora *</label>
-                        <input type="time" name="hora" required />
+                        <label>Capacidad Máxima</label>
+                        <input
+                          type="number"
+                          name="capacidad_maxima"
+                          min="1"
+                          placeholder="Número de participantes"
+                        />
                       </div>
                     </div>
                   </div>
@@ -675,21 +675,18 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label>Modalidad *</label>
-                        <select name="modalidad" required>
-                          <option value="">Seleccionar modalidad</option>
-                          <option value="presencial">Presencial</option>
-                          <option value="virtual">Virtual</option>
-                          <option value="hibrido">Híbrido</option>
+                        <select name="modalidad" id="modalidad-evento" required>
+                          <!-- Se llenará dinámicamente desde la base de datos -->
                         </select>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label>Ubicación/Plataforma *</label>
+                        <label>Plataforma *</label>
                         <input
                           type="text"
                           name="ubicacion"
-                          placeholder="Dirección o enlace virtual"
+                          placeholder="Enlace virtual"
                           required
                         />
                       </div>
@@ -709,35 +706,42 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label>Capacidad Máxima</label>
+                        <label>Hora de Inicio *</label>
+                        <input type="time" name="hora_inicio" required />
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Hora de Fin</label>
+                        <input type="time" name="hora_fin" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Costo de Entrada</label>
                         <input
                           type="number"
-                          name="capacidad"
-                          min="1"
-                          placeholder="Número de participantes"
+                          name="costo"
+                          min="0"
+                          step="0.01"
+                          placeholder="0.00 (Gratuito)"
                         />
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label>Costo de Entrada</label>
-                        <select name="costo">
-                          <option value="gratuito">Gratuito</option>
-                          <option value="donacion">Donación sugerida</option>
-                          <option value="pago">Evento de pago</option>
-                        </select>
+                        <label>Información de Contacto *</label>
+                        <input
+                          type="email"
+                          name="contacto"
+                          placeholder="email@ejemplo.com"
+                          required
+                        />
                       </div>
                     </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Información de Contacto *</label>
-                    <input
-                      type="email"
-                      name="contacto"
-                      placeholder="email@ejemplo.com"
-                      required
-                    />
                   </div>
 
                   <div class="form-group">
@@ -1256,6 +1260,32 @@
         </button>
         <div class="modal-body" id="evento-modal-content">
           <!-- Contenido dinámico del evento -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Confirmación para Crear Evento -->
+    <div class="modal-overlay" id="crear-evento-modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="modal-title">Evento Creado</h4>
+          <button class="modal-close" onclick="closeCrearEventoModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-icon">
+            <i
+              class="bi bi-check-circle-fill text-success"
+              style="font-size: 3rem"
+            ></i>
+          </div>
+          <p id="modal-message">¡Tu evento ha sido creado exitosamente!</p>
+          <div class="modal-actions">
+            <button class="btn btn-primary" onclick="closeCrearEventoModal()">
+              Aceptar
+            </button>
+          </div>
         </div>
       </div>
     </div>
