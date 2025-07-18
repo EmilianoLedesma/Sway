@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Tienda - SWAY</title>
+  
+  <!-- Favicons -->
+  <link href="assets/img/SWAY (1).png" rel="icon">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800" rel="stylesheet">
+  
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/tienda.css" rel="stylesheet">
+</head>
+
+<body class="tienda-page">
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">SWAY</h1>
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#portfolio">Novedades</a></li>
+          <li><a href="especies.html">Especies</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="tienda.html" class="active">Tienda</a></li>
+        </ul>
+      </nav>
+      
+      <a class="btn-getstarted" href="#donation">Donar</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+            <h1>Tienda Oceánica SWAY</h1>
+            <p>Productos sostenibles que apoyan la conservación marina. Cada compra contribuye directamente a nuestros proyectos de protección oceánica.</p>
+            <div class="d-flex">
+              <a href="#productos" class="btn-get-started">Ver Productos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros Section -->
+    <section id="filtros" class="section light-background">
+      <div class="container">
+        <div class="filtros-container">
+          <div class="filtros-header">
+            <h3>Filtrar por categoría</h3>
+            <div class="busqueda">
+              <input type="text" placeholder="Buscar productos..." id="search-input">
+              <i class="bi bi-search"></i>
+            </div>
+          </div>
+          
+          <div class="filtros-botones">
+            <button class="filtro-btn active" data-filter="*">Todos</button>
+            <button class="filtro-btn" data-filter="peluches">Peluches</button>
+            <button class="filtro-btn" data-filter="termos">Termos</button>
+            <button class="filtro-btn" data-filter="pines">Pines</button>
+            <button class="filtro-btn" data-filter="stickers">Stickers</button>
+            <button class="filtro-btn" data-filter="ropa">Ropa</button>
+            <button class="filtro-btn" data-filter="accesorios">Accesorios</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section id="productos" class="section">
+      <div class="container">
+        <div class="row gy-4 productos-grid">
+          
+          <!-- Peluche Tortuga -->
+          <div class="col-lg-4 col-md-6 producto-item" data-categoria="peluches">
+            <div class="producto-card">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Peluche Tortuga Marina">
+              <div class="producto-overlay">
+                <button class="btn-quick-view" onclick="openQuickView('tortuga')">
+                  <i class="bi bi-eye"></i> Vista Rápida
+                </button>
+              </div>
+              <div class="producto-info">
+                <h4>Peluche Tortuga Marina</h4>
+                <p class="categoria">Peluches</p>
+                <p class="descripcion">Adorable peluche de tortuga marina hecho con materiales 100% reciclados.</p>
+                <div class="precio-rating">
+                  <span class="precio">$24.99</span>
+                  <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>(48)</span>
+                  </div>
+                </div>
+                <button class="btn-add-cart">
+                  <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Termo Océano -->
+          <div class="col-lg-4 col-md-6 producto-item" data-categoria="termos">
+            <div class="producto-card">
+              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400" alt="Termo Océano Azul">
+              <div class="producto-overlay">
+                <button class="btn-quick-view" onclick="openQuickView('termo')">
+                  <i class="bi bi-eye"></i> Vista Rápida
+                </button>
+              </div>
+              <div class="producto-info">
+                <h4>Termo Océano Azul 500ml</h4>
+                <p class="categoria">Termos</p>
+                <p class="descripcion">Termo de acero inoxidable con diseño oceánico, mantiene temperatura 12 horas.</p>
+                <div class="precio-rating">
+                  <span class="precio">$34.99</span>
+                  <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <span>(32)</span>
+                  </div>
+                </div>
+                <button class="btn-add-cart">
+                  <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Set de Pines -->
+          <div class="col-lg-4 col-md-6 producto-item" data-categoria="pines">
+            <div class="producto-card">
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400" alt="Set de Pines Marinos">
+              <div class="producto-overlay">
+                <button class="btn-quick-view" onclick="openQuickView('pines')">
+                  <i class="bi bi-eye"></i> Vista Rápida
+                </button>
+              </div>
+              <div class="producto-info">
+                <h4>Set de Pines Vida Marina</h4>
+                <p class="categoria">Pines</p>
+                <p class="descripcion">Colección de 6 pines esmaltados con especies marinas icónicas.</p>
+                <div class="precio-rating">
+                  <span class="precio">$15.99</span>
+                  <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>(67)</span>
+                  </div>
+                </div>
+                <button class="btn-add-cart">
+                  <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pack de Stickers -->
+          <div class="col-lg-4 col-md-6 producto-item" data-categoria="stickers">
+            <div class="producto-card">
+              <img src="https://images.unsplash.com/photo-1586510419923-3dde510e6cd9?w=400" alt="Pack de Stickers">
+              <div class="producto-overlay">
+                <button class="btn-quick-view" onclick="openQuickView('stickers')">
+                  <i class="bi bi-eye"></i> Vista Rápida
+                </button>
+              </div>
+              <div class="producto-info">
+                <h4>Pack Stickers Océano Limpio</h4>
+                <p class="categoria">Stickers</p>
+                <p class="descripcion">25 stickers impermeables con mensajes de conservación marina.</p>
+                <div class="precio-rating">
+                  <span class="precio">$9.99</span>
+                  <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <span>(89)</span>
+                  </div>
+                </div>
+                <button class="btn-add-cart">
+                  <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Camiseta Ballena -->
+          <div class="col-lg-4 col-md-6 producto-item" data-categoria="ropa">
+            <div class="producto-card">
+              <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" alt="Camiseta Ballena">
+              <div class="producto-overlay">
+                <button class="btn-quick-view" onclick="openQuickView('camiseta')">
+                  <i class="bi bi-eye"></i> Vista Rápida
+                </button>
+              </div>
+              <div class="producto-info">
+                <h4>Camiseta "Salva las Ballenas"</h4>
+                <p class="categoria">Ropa</p>
+                <p class="descripcion">Camiseta 100% algodón orgánico con estampado de ballena jorobada.</p>
+                <div class="precio-rating">
+                  <span class="precio">$28.99</span>
+                  <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <span>(43)</span>
+                  </div>
+                </div>
+                <button class="btn-add-cart">
+                  <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bolsa Reutilizable -->
+          <div class="col-lg-4 col-md-6 producto-item" data-categoria="accesorios">
+            <div class="producto-card">
+              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400" alt="Bolsa Reutilizable">
+              <div class="producto-overlay">
+                <button class="btn-quick-view" onclick="openQuickView('bolsa')">
+                  <i class="bi bi-eye"></i> Vista Rápida
+                </button>
+              </div>
+              <div class="producto-info">
+                <h4>Bolsa Reutilizable Coral</h4>
+                <p class="categoria">Accesorios</p>
+                <p class="descripcion">Bolsa eco-friendly resistente con diseño de arrecife de coral.</p>
+                <div class="precio-rating">
+                  <span class="precio">$12.99</span>
+                  <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>(76)</span>
+                  </div>
+                </div>
+                <button class="btn-add-cart">
+                  <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- Carrito flotante -->
+        <div class="carrito-flotante" id="carrito-flotante">
+          <div class="carrito-header">
+            <i class="bi bi-cart3"></i>
+            <span class="carrito-count">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal Vista Rápida -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeQuickView()">&times;</button>
+      <div class="modal-body" id="modal-body">
+        <!-- Contenido dinámico del producto -->
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/tienda.js"></script>
+</body>
+</html>

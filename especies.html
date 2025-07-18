@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Catálogo de Especies - SWAY</title>
+  
+  <!-- Favicons -->
+  <link href="assets/img/SWAY (1).png" rel="icon">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800" rel="stylesheet">
+  
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/especies.css" rel="stylesheet">
+</head>
+
+<body class="especies-page">
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">SWAY</h1>
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#portfolio">Novedades</a></li>
+          <li><a href="especies.html" class="active">Especies</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+        </ul>
+      </nav>
+      
+      <a class="btn-getstarted" href="#donation">Donar</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+            <h1>Catálogo de Especies Marinas</h1>
+            <p>Descubre la increíble biodiversidad de nuestros océanos y aprende sobre el estado de conservación de cada especie.</p>
+            <div class="d-flex">
+              <a href="#especies" class="btn-get-started">Explorar Especies</a>
+              <a href="#mapa" class="btn-watch-video d-flex align-items-center">
+                <i class="bi bi-map"></i><span>Ver Mapa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estadísticas Section -->
+    <section id="stats" class="section light-background">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card" data-aos="fade-up">
+              <div class="stats-icon">
+                <i class="bi bi-award"></i>
+              </div>
+              <div class="stats-content">
+                <h3 class="stats-number">2,847</h3>
+                <p>Especies Catalogadas</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="stats-icon threatened">
+                <i class="bi bi-exclamation-triangle"></i>
+              </div>
+              <div class="stats-content">
+                <h3 class="stats-number">456</h3>
+                <p>En Peligro de Extinción</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="stats-icon protected">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <div class="stats-content">
+                <h3 class="stats-number">1,234</h3>
+                <p>Especies Protegidas</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="stats-icon discovered">
+                <i class="bi bi-search"></i>
+              </div>
+              <div class="stats-content">
+                <h3 class="stats-number">89</h3>
+                <p>Descubiertas este año</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros y Búsqueda -->
+    <section id="filtros" class="section">
+      <div class="container">
+        <div class="filtros-container">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="busqueda-avanzada">
+                <h4>Buscar Especies</h4>
+                <input type="text" placeholder="Nombre científico o común..." id="search-especies">
+                
+                <div class="filter-group">
+                  <label>Hábitat</label>
+                  <select id="habitat-filter">
+                    <option value="">Todos los hábitats</option>
+                    <option value="arrecife">Arrecifes de Coral</option>
+                    <option value="aguas-profundas">Aguas Profundas</option>
+                    <option value="aguas-abiertas">Aguas Abiertas</option>
+                    <option value="costero">Zona Costera</option>
+                    <option value="polar">Aguas Polares</option>
+                  </select>
+                </div>
+                
+                <div class="filter-group">
+                  <label>Estado de Conservación</label>
+                  <select id="conservation-filter">
+                    <option value="">Todos los estados</option>
+                    <option value="extincion-critica">Extinción Crítica</option>
+                    <option value="peligro">En Peligro</option>
+                    <option value="vulnerable">Vulnerable</option>
+                    <option value="casi-amenazada">Casi Amenazada</option>
+                    <option value="preocupacion-menor">Preocupación Menor</option>
+                  </select>
+                </div>
+                
+                <div class="filter-group">
+                  <label>Tipo de Organismo</label>
+                  <select id="type-filter">
+                    <option value="">Todos los tipos</option>
+                    <option value="mamiferos">Mamíferos Marinos</option>
+                    <option value="peces">Peces</option>
+                    <option value="reptiles">Reptiles Marinos</option>
+                    <option value="invertebrados">Invertebrados</option>
+                    <option value="corales">Corales</option>
+                    <option value="algas">Algas Marinas</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-8">
+              <div class="vista-opciones">
+                <div class="vista-buttons">
+                  <button class="vista-btn active" data-vista="grid">
+                    <i class="bi bi-grid-3x3-gap"></i> Vista Grid
+                  </button>
+                  <button class="vista-btn" data-vista="list">
+                    <i class="bi bi-list-ul"></i> Vista Lista
+                  </button>
+                  <button class="vista-btn" data-vista="mapa">
+                    <i class="bi bi-map"></i> Vista Mapa
+                  </button>
+                </div>
+                
+                <div class="ordenar">
+                  <select id="sort-especies">
+                    <option value="nombre">Ordenar por Nombre</option>
+                    <option value="conservation">Estado de Conservación</option>
+                    <option value="size">Tamaño</option>
+                    <option value="habitat">Hábitat</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Especies Grid -->
+    <section id="especies" class="section light-background">
+      <div class="container">
+        <div class="especies-grid" id="especies-grid">
+          
+          <!-- Especie 1: Tortuga Marina -->
+          <div class="especie-card" data-habitat="costero" data-conservation="vulnerable" data-type="reptiles">
+            <div class="especie-image">
+              <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400" alt="Tortuga Marina Verde">
+              <div class="conservation-badge vulnerable">Vulnerable</div>
+            </div>
+            <div class="especie-content">
+              <h3>Tortuga Marina Verde</h3>
+              <p class="scientific-name">Chelonia mydas</p>
+              <div class="especie-stats">
+                <div class="stat">
+                  <i class="bi bi-rulers"></i>
+                  <span>1.5m longitud</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>Océanos tropicales</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-heart-pulse"></i>
+                  <span>Vida: 80 años</span>
+                </div>
+              </div>
+              <p class="especie-description">
+                La tortuga verde es una de las especies de tortugas marinas más grandes. Su nombre proviene del color verdoso de su grasa, no de su caparazón.
+              </p>
+              <div class="especie-actions">
+                <button class="btn-primary" onclick="openSpeciesDetail('tortuga-verde')">
+                  Ver Detalles
+                </button>
+                <button class="btn-secondary" onclick="reportSighting('tortuga-verde')">
+                  <i class="bi bi-camera"></i> Reportar Avistamiento
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Especie 2: Ballena Azul -->
+          <div class="especie-card" data-habitat="aguas-abiertas" data-conservation="peligro" data-type="mamiferos">
+            <div class="especie-image">
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400" alt="Ballena Azul">
+              <div class="conservation-badge peligro">En Peligro</div>
+            </div>
+            <div class="especie-content">
+              <h3>Ballena Azul</h3>
+              <p class="scientific-name">Balaenoptera musculus</p>
+              <div class="especie-stats">
+                <div class="stat">
+                  <i class="bi bi-rulers"></i>
+                  <span>30m longitud</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>Todos los océanos</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-heart-pulse"></i>
+                  <span>Vida: 90 años</span>
+                </div>
+              </div>
+              <p class="especie-description">
+                El animal más grande que ha existido en la Tierra. Su corazón puede pesar tanto como un automóvil pequeño.
+              </p>
+              <div class="especie-actions">
+                <button class="btn-primary" onclick="openSpeciesDetail('ballena-azul')">
+                  Ver Detalles
+                </button>
+                <button class="btn-secondary" onclick="reportSighting('ballena-azul')">
+                  <i class="bi bi-camera"></i> Reportar Avistamiento
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Especie 3: Pez Payaso -->
+          <div class="especie-card" data-habitat="arrecife" data-conservation="preocupacion-menor" data-type="peces">
+            <div class="especie-image">
+              <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400" alt="Pez Payaso">
+              <div class="conservation-badge preocupacion-menor">Preocupación Menor</div>
+            </div>
+            <div class="especie-content">
+              <h3>Pez Payaso</h3>
+              <p class="scientific-name">Amphiprioninae</p>
+              <div class="especie-stats">
+                <div class="stat">
+                  <i class="bi bi-rulers"></i>
+                  <span>11cm longitud</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>Arrecifes Indo-Pacífico</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-heart-pulse"></i>
+                  <span>Vida: 10 años</span>
+                </div>
+              </div>
+              <p class="especie-description">
+                Conocido por su relación simbiótica con las anémonas marinas, el pez payaso es inmune al veneno de su huésped.
+              </p>
+              <div class="especie-actions">
+                <button class="btn-primary" onclick="openSpeciesDetail('pez-payaso')">
+                  Ver Detalles
+                </button>
+                <button class="btn-secondary" onclick="reportSighting('pez-payaso')">
+                  <i class="bi bi-camera"></i> Reportar Avistamiento
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Especie 4: Coral Cuerno de Alce -->
+          <div class="especie-card" data-habitat="arrecife" data-conservation="extincion-critica" data-type="corales">
+            <div class="especie-image">
+              <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400" alt="Coral Cuerno de Alce">
+              <div class="conservation-badge extincion-critica">Extinción Crítica</div>
+            </div>
+            <div class="especie-content">
+              <h3>Coral Cuerno de Alce</h3>
+              <p class="scientific-name">Acropora cervicornis</p>
+              <div class="especie-stats">
+                <div class="stat">
+                  <i class="bi bi-rulers"></i>
+                  <span>2m altura</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-geo-alt"></i>
+                  <span>Caribe</span>
+                </div>
+                <div class="stat">
+                  <i class="bi bi-heart-pulse"></i>
+                  <span>Vida: 100+ años</span>
+                </div>
+              </div>
+              <p class="especie-description">
+                Una de las especies de coral más importantes para la construcción de arrecifes en el Caribe, severamente amenazada por el blanqueamiento.
+              </p>
+              <div class="especie-actions">
+                <button class="btn-primary" onclick="openSpeciesDetail('coral-cuerno')">
+                  Ver Detalles
+                </button>
+                <button class="btn-secondary" onclick="reportSighting('coral-cuerno')">
+                  <i class="bi bi-camera"></i> Reportar Avistamiento
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- Paginación -->
+        <div class="pagination-container">
+          <button class="pagination-btn" id="prev-page" disabled>
+            <i class="bi bi-chevron-left"></i> Anterior
+          </button>
+          <div class="pagination-info">
+            Página <span id="current-page">1</span> de <span id="total-pages">12</span>
+          </div>
+          <button class="pagination-btn" id="next-page">
+            Siguiente <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mapa Interactivo -->
+    <section id="mapa-section" class="section" style="display: none;">
+      <div class="container-fluid">
+        <div class="mapa-container">
+          <div id="species-map" class="species-map">
+            <!-- Aquí iría el mapa interactivo -->
+            <div class="map-placeholder">
+              <i class="bi bi-map"></i>
+              <h3>Mapa Interactivo de Especies</h3>
+              <p>Visualiza la distribución global de especies marinas</p>
+            </div>
+          </div>
+          <div class="map-legend">
+            <h4>Leyenda</h4>
+            <div class="legend-item">
+              <span class="legend-color extincion-critica"></span>
+              <span>Extinción Crítica</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color peligro"></span>
+              <span>En Peligro</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color vulnerable"></span>
+              <span>Vulnerable</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color preocupacion-menor"></span>
+              <span>Preocupación Menor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal Detalles de Especie -->
+  <div class="modal-overlay" id="species-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeSpeciesModal()">&times;</button>
+      <div class="modal-body" id="species-modal-content">
+        <!-- Contenido dinámico de la especie -->
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/especies.js"></script>
+</body>
+</html>

@@ -28,7 +28,7 @@ function closePopup() {
 
 function confirmDonation() {
   document.getElementById('confirmation-popup').style.display = 'none';
-  window.open('/payment', '_blank');
+  window.open('/payment.html', '_blank');
 }
 function showNewsletterConfirmation() {
   const email = document.getElementById('newsletter-email').value;
@@ -49,76 +49,16 @@ function showMessageConfirmation(event) {
   // Here you would normally send the form data to the server using AJAX
 }
 
-// Nueva función para enviar contacto
-async function enviarContacto(event) {
-  event.preventDefault();
-  
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const messagePopup = document.getElementById('message-popup');
-  const messageText = document.getElementById('message-popup-text');
-  
-  // Deshabilitar botón durante el envío
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Enviando...';
-  
-  // Obtener datos del formulario
-  const formData = {
-    name: document.getElementById('name-field').value,
-    email: document.getElementById('email-field').value,
-    subject: document.getElementById('subject-field').value,
-    message: document.getElementById('message-field').value
-  };
-  
-  try {
-    const response = await fetch('/api/contacto', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    });
-    
-    const result = await response.json();
-    
-    if (result.success) {
-      messageText.textContent = result.message;
-      messagePopup.style.display = 'flex';
-      form.reset(); // Limpiar formulario
-    } else {
-      messageText.textContent = result.message || 'Error al enviar el mensaje';
-      messagePopup.style.display = 'flex';
-    }
-    
-  } catch (error) {
-    console.error('Error:', error);
-    messageText.textContent = 'Error de conexión. Por favor, intenta de nuevo.';
-    messagePopup.style.display = 'flex';
-  } finally {
-    // Restaurar botón
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Enviar mensaje';
-  }
-}
-
 function closeMessagePopup() {
-  const messagePopup = document.getElementById('message-popup');
-  if (messagePopup) {
-    messagePopup.style.display = 'none';
-  }
+  document.getElementById('message-popup').style.display = 'none';
 }
 
 // Ensure popups are hidden on page load
 document.addEventListener("DOMContentLoaded", function () {
-  const confirmationPopup = document.getElementById('confirmation-popup');
-  const thankyouPopup = document.getElementById('thankyou-popup');
-  const newsletterPopup = document.getElementById('newsletter-popup');
-  const messagePopup = document.getElementById('message-popup');
-  
-  if (confirmationPopup) confirmationPopup.style.display = 'none';
-  if (thankyouPopup) thankyouPopup.style.display = 'none';
-  if (newsletterPopup) newsletterPopup.style.display = 'none';
-  if (messagePopup) messagePopup.style.display = 'none';
+  document.getElementById('confirmation-popup').style.display = 'none';
+  document.getElementById('thankyou-popup').style.display = 'none';
+  document.getElementById('newsletter-popup').style.display = 'none';
+  document.getElementById('message-popup').style.display = 'none';
 });
 function toggleDescription(card) {
   var description = card.querySelector('.description');
@@ -218,16 +158,13 @@ function closePopup(popupId) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  
-  if (scrollTop) {
-    scrollTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+  scrollTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
-  }
+  });
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
