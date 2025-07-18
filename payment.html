@@ -132,30 +132,27 @@
 </head>
 
 <body class="starter-page-page">
-    <div class="container">
-        <header class="header">
-            <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <h1 class="sitename" style="color: #37517e; font-weight: bold;">SWAY</h1>
-            </a>
-        </header>
-        <div class="container-content">
-            <div class="payment">
-                <div class="payment-gateway">
-                    <h2>Gracias por tu generosa donación!</h2>
-                    <input type="text" placeholder="Número de tarjeta">
-                    <input type="text" placeholder="Nombre en la tarjeta">
-                    <input type="text" placeholder="Fecha de expiración (MM/AA)">
-                    <input type="text" placeholder="Código de seguridad (CVV)">
-                    <button onclick="showModal()">Pagar</button>
-                </div>
-            </div>
-            <div class="image">
-                <div class="image-placeholder">
-                    <img src="assets/img/masonry-portfolio/payment.png" alt="Placeholder de imagen">
+
+    <main class="main">
+        <div class="container" style="margin-top: 100px;">
+            <div class="container-content">
+                <div class="payment">
+                    <div class="payment-gateway">
+                        <h2>Gracias por tu generosa donación!</h2>
+                        <input type="text" placeholder="Número de tarjeta">
+                        <input type="text" placeholder="Nombre en la tarjeta">
+                        <input type="text" placeholder="Fecha de expiración (MM/AA)">
+                        <input type="text" placeholder="Código de seguridad (CVV)">
+                        <button onclick="showModal()">Pagar</button>
+                    </div>                </div>
+                <div class="image">
+                    <div class="image-placeholder">
+                        <img src="assets/img/masonry-portfolio/payment.png" alt="Placeholder de imagen">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Modal -->
     <div id="paymentModal" class="modal">

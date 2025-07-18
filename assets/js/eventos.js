@@ -61,6 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
   setupEventListeners();
   renderCalendario();
   renderAgenda();
+  
+  // Testimonial Carousel
+  if (testimonials.length > 0) {
+    showTestimonial(0);
+  }
 });
 
 // Event listeners
@@ -212,7 +217,7 @@ function renderCalendario() {
     const eventosDelDia = getEventosDelDia(currentDay);
     eventosDelDia.forEach(evento => {
       const eventoElement = document.createElement('div');
-      eventoElement.className = `evento-calendario ${evento.tipo}`;
+      eventoElement.className = `evento_calendario ${evento.tipo}`;
       eventoElement.textContent = evento.titulo.substring(0, 15) + (evento.titulo.length > 15 ? '...' : '');
       eventoElement.onclick = () => openEventoDetail(evento.id);
       diaElement.appendChild(eventoElement);
@@ -453,5 +458,29 @@ function crearEvento(e) {
   alert('¡Evento creado exitosamente!\n\nTu evento será revisado y publicado en las próximas 24 horas.');
 }
 
-// Inicializar fecha actual
-updateMonthYear();
+// Testimonial Carousel Functionality
+let currentTestimonial = 0;
+const testimonials = document.querySelectorAll('.testimonial-item');
+
+function showTestimonial(index) {
+  testimonials.forEach((testimonial, i) => {
+    testimonial.classList.toggle('active', i === index);
+  });
+}
+
+function changeTestimonial(direction) {
+  currentTestimonial += direction;
+  
+  if (currentTestimonial >= testimonials.length) {
+    currentTestimonial = 0;
+  } else if (currentTestimonial < 0) {
+    currentTestimonial = testimonials.length - 1;
+  }
+  
+  showTestimonial(currentTestimonial);
+}
+
+// Auto-rotate testimonials
+setInterval(() => {
+  changeTestimonial(1);
+}, 5000);
